@@ -1,0 +1,15 @@
+{
+  "name": "friosens",
+  "version": "1.0.0",
+  "description": "TFG",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.uco.es:friosens/friosens.git"
+  },
+  "author": "Iván Portillo Leal (i32polei@uco.es)",
+  "license": "ISC"
+}
