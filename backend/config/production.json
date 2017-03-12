@@ -1,0 +1,15 @@
+{
+  "app": {
+    "database": {
+      "protocol": "mysql",
+      "host": "localhost",
+      "port": "3306",
+      "database": "friosens",
+      "user": "root",
+      "password": "friosens"
+    },
+    "express": {
+      "port": "3000"
+    }
+  }
+}
