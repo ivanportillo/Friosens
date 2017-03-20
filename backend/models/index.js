@@ -1,27 +1,21 @@
+'use strict';
+
 const orm = require('orm');
-const config = require('config');
+const createFacilityEntity = require('./facilityEntity');
+const createReadingEntity = require('./readingEntity');
+const createUnitEntity = require('./unitEntity');
+const createUserEntity = require('./userEntity');
 
-const databaseCfg = config.get('app.database');
+const db = orm.connect('mysql://root:mysql@localhost/friosens');
 
-let connection = null;
+createFacilityEntity(orm, db);
+createReadingEntity(orm, db);
+createUnitEntity(orm, db);
+createUserEntity(orm, db);
 
-const setup = (db, cb) => {
-  require('./user')(orm, db);
-  require('./facility')(orm, db);
-  require('./unit')(orm, db);
-  require('./reading')(orm,db);
-
-  return cb(null, db);
-};
-
-module.exports = (cb) => {
-  if(connection) return cb(null, connection);
-
-  orm.connect(databaseCfg, (err, db) => {
-    if(err) return cb(err);
-
-    connection = db;
-    db.settings.set('instance.returnAllErrors', true);
-    setup(db, cb);
-  });
+module.exports = {
+  Facilty: db.models.facility,
+  Reading: db.models.reading,
+  Unit: db.models.unit,
+  User: db.models.user
 };

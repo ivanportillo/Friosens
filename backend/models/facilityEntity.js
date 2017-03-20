@@ -1,4 +1,4 @@
-module.exports = (orm, db) => {
+module.exports = function (orm, db) {
   const Facility = db.define('facility', {
     name: { type: 'text', required: true },
     location: { type: 'text' }

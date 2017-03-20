@@ -6,7 +6,7 @@
       "port": "3306",
       "database": "friosens",
       "user": "root",
-      "password": "mysql"
+      "password": "friosens"
     },
     "express": {
       "port": "3000"

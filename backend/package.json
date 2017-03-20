@@ -18,7 +18,7 @@
         "boom": "^4.2.0",
         "config": "^1.25.1",
         "express": "^4.15.2",
-        "mysql": ">= 2.0.0",
+        "mysql": "^2.13.0",
         "orm": "^3.2.3"
     },
     "devDependencies": {
