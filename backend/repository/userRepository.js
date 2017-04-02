@@ -8,7 +8,7 @@ module.exports = UserEntity => {
 
   const findByEmail = (email, cb) => {
     const query = { email };
-    UserEntity.findOne(query, cb);
+    UserEntity.one(query, cb);
   };
 
   const create = (user, cb) => {
