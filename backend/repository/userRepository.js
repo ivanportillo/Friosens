@@ -1,7 +1,5 @@
 'use strict';
 
-const NotFoundError = require('spur-errors').NotFoundError;
-
 module.exports = UserEntity => {
   const findOneById = (id, cb) => {
     const query = { id };
