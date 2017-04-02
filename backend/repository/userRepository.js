@@ -1,10 +1,14 @@
 'use strict';
 
-module.exports = (userEntity) => {
-  const findUserByName = (name, cb) => {
-    const query = { first_name: name };
-    userEntity.find(query, cb);
+module.exports = UserEntity => {
+  const findOneById = (id, cb) => {
+    const query = { id };
+    UserEntity.one(query, cb);
   };
 
-  return { findUserByName };
+  const create = (user, cb) => {
+    UserEntity.create(user, cb);
+  };
+
+  return { findOneById, create };
 };

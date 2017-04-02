@@ -1,21 +1,23 @@
+'use strict';
+
 module.exports = (orm, db) => {
   const User = db.define('user', {
-    first_name: { type: 'text' },
-    last_name: { type: 'text' },
+    first_name: { type: 'text', required: true },
+    last_name: { type: 'text', required: true },
     company: { type: 'text' },
     address: { type: 'text' },
     telephone: { type: 'text' },
-    enabled: { type: 'boolean' },
-    admin: { type: 'boolean' },
-    email: { type: 'text' },
-    created_at: { type: 'date', required: true, time: true },
-    password: { type: 'text' },
-    salt: { type: 'text' },
+    enabled: { type: 'boolean', required: true },
+    admin: { type: 'boolean', required: true },
+    email: { type: 'text', required: true },
+    createdAt: { type: 'date', required: true, time: true },
+    password: { type: 'text', required: true },
+    salt: { type: 'text', required: true },
     last_login: { type: 'date', time: true }
   },{
     hooks: {
-      beforeValidation: () => {
-        this.created_at = new Date();
+      beforeValidation: function () {
+        this.createdAt = new Date();
       }
     }
   });

@@ -1,21 +1,27 @@
 'use strict';
 
 const orm = require('orm');
+const config = require('config');
+const database = require('../utils/database');
+
+const createAlarmEntity = require('./alarmEntity');
 const createFacilityEntity = require('./facilityEntity');
 const createReadingEntity = require('./readingEntity');
-const createUnitEntity = require('./unitEntity');
 const createUserEntity = require('./userEntity');
+const createUnitEntity = require('./unitEntity');
 
-const db = orm.connect('mysql://root:mysql@localhost/friosens');
+const db = database.getDb();
 
+createAlarmEntity(orm, db);
 createFacilityEntity(orm, db);
 createReadingEntity(orm, db);
-createUnitEntity(orm, db);
 createUserEntity(orm, db);
+createUnitEntity(orm, db);
 
 module.exports = {
-  Facilty: db.models.facility,
+  Alarm: db.models.alarm,
+  Facility: db.models.facility,
   Reading: db.models.reading,
-  Unit: db.models.unit,
-  User: db.models.user
+  User: db.models.user,
+  Unit: db.models.unit
 };

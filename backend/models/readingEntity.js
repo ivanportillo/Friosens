@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (orm, db) => {
   const Reading = db.define('reading', {
     created_at: { type: 'date', required: true, time: true },

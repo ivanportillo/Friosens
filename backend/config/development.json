@@ -4,11 +4,19 @@
       "protocol": "mysql",
       "host": "localhost",
       "port": "3306",
-      "database": "friosens",
+      "database": "friosens_dev",
       "user": "root",
-      "password": "friosens"
+      "password": "mysql"
+    },
+    "password": {
+      "salt_rounds": 10,
+    },
+    "token": {
+      "secret": "FR10S3NS_PROD",
+      "ttl": "3600"
     },
     "express": {
+      "host": "localhost",
       "port": "3000"
     }
   }

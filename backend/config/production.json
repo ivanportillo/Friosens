@@ -6,9 +6,17 @@
       "port": "3306",
       "database": "friosens",
       "user": "root",
-      "password": "friosens"
+      "password": "mysql"
+    },
+    "password": {
+      "salt_rounds": 10,
+    },
+    "token": {
+      "secret": "FR10S3NS_PROD",
+      "ttl": "3600"
     },
     "express": {
+      "host": "",
       "port": "3000"
     }
   }

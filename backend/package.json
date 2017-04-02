@@ -4,8 +4,8 @@
     "description": "TFG",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon index.js",
-        "test": "cucumber.js ./test/features"
+        "start": "nodemon --inspect index.js",
+        "test": "NODE_ENV=test cucumber.js ./test/features --tags @sprint1"
     },
     "repository": {
         "type": "git",
@@ -14,18 +14,23 @@
     "author": "Iván Portillo Leal (i32polei@uco.es)",
     "license": "ISC",
     "dependencies": {
+        "async": "^2.1.5",
+        "bcrypt": "^1.0.2",
         "body-parser": "^1.17.1",
         "boom": "^4.2.0",
         "config": "^1.25.1",
         "express": "^4.15.2",
+        "jsonwebtoken": "^7.3.0",
         "mysql": "^2.13.0",
-        "orm": "^3.2.3"
+        "orm": "^3.2.3",
+        "spur-errors": "^0.2.6"
     },
     "devDependencies": {
         "cucumber": "^2.0.0-rc.8",
         "istanbul": "^0.4.5",
         "jshint": "2.x",
         "mocha": "^3.0.2",
+        "request": "^2.81.0",
         "should": "^11.1.0",
         "supertest": "^2.0.0"
     }
