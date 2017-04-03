@@ -24,4 +24,6 @@ module.exports = tokenService => {
       else cb(null, payload);
     });
   };
+
+  return { create, verify };
 };
