@@ -1,13 +1,13 @@
-@sprint1
+@sprint1 @working
 Feature: Sign in
   As user or administrator
   I want to be able to sign in to access to the system
 
   Background:
     Given there is the following users:
-    | id | first_name | last_name | enabled | admin | email            | password | salt |
-    |  1 | Iván       | Portillo  | 1       | 1     | i32polei@uco.es  | pass     | salt |
-    |  2 | Disabled   | User      | 0       | 0     | disabled@user.es | pass     | salt |
+    | id | first_name | last_name | enabled | admin | email            | password |
+    |  1 | Iván       | Portillo  | true    | 1     | i32polei@uco.es  | pass     |
+    |  2 | Disabled   | User      | false   | 0     | disabled@user.es | pass     |
 
   Scenario: Sign in with a valid user
     When I sign in with email "i32polei@uco.es" and password "pass"
