@@ -11,10 +11,10 @@ const _generateSalt = (cb) => {
 };
 
 const _generateHash = (password, salt, cb) => {
-  bcrypt.hash(password, salt, (err, hash)) => {
+  bcrypt.hash(password, salt, (err, hash) => {
     if (err) cb(err);
     else cb(null, hash, salt);
-  };
+  });
 };
 
 const encrypt = (password, cb) => {
@@ -33,4 +33,7 @@ const compareEncrypted = (passwordPlain, passwordEncrypt, salt, cb) => {
   });
 };
 
-module.exports = { encrypt, compareEncrypted };
+module.exports = {
+    encrypt,
+    compareEncrypted
+};
