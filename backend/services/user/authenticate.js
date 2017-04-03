@@ -7,7 +7,7 @@ module.exports = (UserRepository, encrypt) => {
   const _findAccount = (email, cb) => {
     UserRepository.findByEmail(email, (err, user) => {
         if (err) cb(err);
-        else if(!user) cb(new UnauthorizedError('Invalid user'));
+        else if(!user) cb(new UnauthorizedError.create('Invalid user'));
         else cb(null, user);
     });
   };
@@ -15,14 +15,14 @@ module.exports = (UserRepository, encrypt) => {
   const _validatePassword = (user, password, cb) => {
     encrypt.compareEncrypted(password, user.password, user.salt, (err, correct) => {
         if (err) cb(err);
-        else if(!correct) cb(new UnauthorizedError('Incorrect password'));
+        else if(!correct) cb(new UnauthorizedError.create('Incorrect password'));
         else cb(null, user);
     });
   };
 
   const _checkEnabled = (user, cb) => {
     if(user.enabled) cb(null, user);
-    else cb(new UnauthorizedError('User disabled'));
+    else cb(new UnauthorizedError.create('User disabled'));
   };
 
   return (email, password, callback) => waterfall([
