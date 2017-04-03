@@ -17,6 +17,6 @@ module.exports = (userServices) => {
 
   return (email, password, callback) => waterfall([
      next => _authenticate(email, password, next),
-     (user, next) => _generateToken(user, cb)
+     (user, next) => _generateToken(user, next)
   ], callback);
 };
