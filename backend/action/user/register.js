@@ -1,3 +1,9 @@
-/**
- * Created by ivanportilloleal on 05/04/2017.
- */
+'use strict';
+
+module.exports = (userServices) => {
+  const _createUser = (user, cb) => {
+    userServices.createUser(user, cb);
+  };
+
+  return (user, callback) => _createUser(user, callback);
+};
