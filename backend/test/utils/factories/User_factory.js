@@ -1,10 +1,9 @@
-const userRepository = require('../../../repository').User;
 const userServices = require('../../../services/user');
 const config = require('config');
 
 module.exports = () => {
   const _createUser = (user, cb) => {
-    userRepository.create(user, cb);
+    userServices.createUser(user, cb);
   };
 
   const _createToken = (payload, cb) => {
