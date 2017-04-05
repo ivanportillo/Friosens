@@ -8,6 +8,7 @@ exports.LOGIN_PATH = prefix('/login');
 exports.LOGOUT_PATH = prefix('/logout');
 
 //ACCOUNT
+exports.REGISTER_PATH = prefix('/register');
 exports.ACCOUNT_PATH = prefix('/account');
 
 //FACILITIES

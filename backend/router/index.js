@@ -12,6 +12,7 @@ module.exports = router => {
 
   // AUTH
   router.post(PATHS.LOGIN_PATH, usersController.login);
+  router.post(PATHS.REGISTER_PATH, usersController.register);
 
   return router;
 };
