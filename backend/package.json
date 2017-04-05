@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon --inspect index.js",
-        "test": "NODE_ENV=test cucumber.js ./test/features --tags @sprint1"
+        "test": "NODE_ENV=test cucumber.js ./test/features --tags @working"
     },
     "repository": {
         "type": "git",
