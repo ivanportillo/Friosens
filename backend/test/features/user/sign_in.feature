@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Sign in
   As user or administrator
   I want to be able to sign in to access to the system
