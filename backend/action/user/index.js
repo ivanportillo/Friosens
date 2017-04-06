@@ -2,10 +2,10 @@
 
 const userService = require('../../services/user');
 
-const signin = require('./signin');
-const register = require('./register');
+const createSignin = require('./signin');
+const createRegister = require('./register');
 
 module.exports = {
-    signin: signin(userService),
-    register: register(userService)
+    signin: createSignin(userService),
+    register: createRegister(userService)
 };
