@@ -4,18 +4,15 @@ const { defineSupportCode } = require('cucumber');
 
 const repositories = require('../../../../repository');
 const userRepository = repositories.User;
-const facilityRepository = repositories.Facility;
-const unitRepository = repositories.Unit;
 
 const facilityActions = require('../../../../action/facility');
 const unitActions = require('../../../../action/unit');
 
 const createUnit = unitActions.createUnit;
 const createFacility = facilityActions.createFacility;
-const removeFacility = facilityActions.removeFacility;
 
-defineSupportCode(({ Given, When, Then }) => {
-  Given('there is the following user:', (table, done) => {
+defineSupportCode(({ Given }) => {
+  Given(/^there is the following user:$/, (table, done) => {
     const user = table.hashes()[0];
     userRepository.create(user, err => {
       if(err) done(err);
@@ -32,17 +29,21 @@ defineSupportCode(({ Given, When, Then }) => {
     });
   });
 
-  //REMOVE_FACILITY - UPDATE_FACILITY
-  Given('the following facility of the user ID {int}:', (int, table, done) => {
+  //REMOVE_FACILITY
+  Given(/^the following facility:$/, (table, done) => {
     const facility = table.hashes()[0];
-    const userId = int;
-    createFacility(facility, userId, done);
+    createFacility(facility, facility.user_id, err => {
+      if (err) done(err);
+      else done();
+    });
   });
 
-  //REMOVE_FACILITY
-  Given('the following unit belonging to previous facility ID {int}:', (int, table, done) => {
-    const facilityId = int;
+
+  Given(/^the following unit:$/, (table, done) => {
     const unit = table.hashes()[0];
-    createUnit(unit, facilityId, done);
+    createUnit(unit, unit.facility_id, err => {
+      if (err) done(err);
+      else done();
+    });
   });
 });
