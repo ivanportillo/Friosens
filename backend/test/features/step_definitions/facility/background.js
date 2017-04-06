@@ -1,6 +1,7 @@
 'use strict';
 
 const { defineSupportCode } = require('cucumber');
+const async = require('async');
 
 const repositories = require('../../../../repository');
 const userRepository = repositories.User;
@@ -19,11 +20,10 @@ defineSupportCode(({ Given }) => {
       userRepository.findOneById(user.id, (err, userFound) => {
         if(err) done(err);
         else {
-          if(userFound.id == user.id &&
-             userFound.first_name == user.first_name &&
-             userFound.last_name == user.last_name){
-            done();
-          } else done(new Error());
+          userFound.id.should.be.eql(user.id);
+          userFound.first_name.should.be.eql(user.first_name);
+          userFound.last_name.should.be.eql(user.last_name);
+          done();
         }
       });
     });
@@ -45,5 +45,16 @@ defineSupportCode(({ Given }) => {
       if (err) done(err);
       else done();
     });
+  });
+
+  //SHOW_FACILITIES
+  Given(/^the following facilities:$/, (table, done) => {
+    const facilities = table.hashes();
+    async.each(facilities, (facility, cb) => {
+      createFacility(facility, facility.user_id, err => {
+        if (err) cb(err);
+        else cb();
+      });
+    }, done);
   });
 });
