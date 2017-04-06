@@ -3,7 +3,8 @@
 const facilitiesActions = require('../../action/facility');
 const createFacility = facilitiesActions.createFacility;
 const removeFacility = facilitiesActions.removeFacility;
-const config = require('config');
+
+const responseBuilder = require('../../utils/responseBuilder');
 
 module.exports = {
   createFacility: (req, res) => {
@@ -12,31 +13,12 @@ module.exports = {
       location: req.body.location
     };
 
-    createFacility(facility, req.body.userId, (err, facility) => {
-      if(err) res.status(500).send({
-        message: err,
-        error: true
-      });
-      res.status(200).send({
-        item: facility,
-        message: '',
-        error: false
-      });
-    });
+    createFacility(facility, req.body.userId, responseBuilder.createResponse(req, res));
   },
   removeFacility: (req, res) => {
-    removeFacility(req.params.id, err => {
-      if(err) res.status(500).send({
-        message: err,
-        error: true
-      });
-      res.status(200).send({
-        message: "Removed",
-        error: false
-      });
-    });
+    removeFacility(req.params.id, responseBuilder.createResponse(req, res));
   },
   updateFacility: (req, res) => {
-    
+
   }
 };

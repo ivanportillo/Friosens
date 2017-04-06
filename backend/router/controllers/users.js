@@ -4,12 +4,11 @@ const usersActions = require('../../action/user');
 const signin = usersActions.signin;
 const register = usersActions.register;
 
+const responseBuilder = require('../../utils/responseBuilder');
+
 module.exports = {
   login: (req, res) => {
-    signin(req.body.email, req.body.password, (err, token) => {
-        if(err) res.status(err.statusCode).json({ error: err.message });
-        else { res.json({ token }); }
-    });
+    signin(req.body.email, req.body.password, responseBuilder.createResponse(req, res));
   },
   register: (req, res) => {
     const user = {
@@ -22,9 +21,6 @@ module.exports = {
         email: req.body.email,
         password: req.body.password,
     };
-    register(user, (err, result) => {
-       if(err) res.status(err.statusCode).json({ error: err.message });
-       else { res.json(result); }
-    });
+    register(user, responseBuilder.createResponse(req, res));
   }
 };
