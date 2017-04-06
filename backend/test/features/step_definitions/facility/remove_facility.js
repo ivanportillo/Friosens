@@ -4,44 +4,67 @@ const should = require('should');
 const { defineSupportCode } = require('cucumber');
 
 const repositories = require('../../../../repository');
-const userRepository = repositories.User;
 const facilityRepository = repositories.Facility;
 const unitRepository = repositories.Unit;
 
-const facilityActions = require('../../../../action/facility');
-const unitActions = require('../../../../action/unit');
-
-const createFacility = facilityActions.createFacility;
-const removeFacility = facilityActions.removeFacility;
-const createUnit = unitActions.createUnit;
+const tokenUt = require('../../../utils/factories/User_factory')();
 
 const PATHS = require('../../../../router/paths');
 const request = require('../../support/request');
 
-defineSupportCode(({ When, Then }) => {
-  When('I remove the facility with ID {int}', (int, done) => {
-    const facilityId = int;
+defineSupportCode(({ Given, When, Then }) => {
+  let token;
+  let responseRemove;
+
+  Given(/^\[remove\-facility\] I'm logged in as an administrator$/, done => {
+    const user = {
+      first_name: 'Nombre',
+      last_name: 'Apellidos',
+      enabled: true,
+      admin: true,
+      email: 'email@dominio.es',
+      password: 'password'
+    };
+    tokenUt.createLogged(user, (err, tokenResult) => {
+      if(err) done(err);
+      else {
+        token = tokenResult;
+        done();
+      }
+    });
+  });
+
+  When(/^I remove the facility with ID (\d+)$/, (facilityId, done) => {
     request.del(`${PATHS.FACILITIES_PATH}/${facilityId}`, null, null, (error, response, statusCode) => {
       should.not.exists(error);
-      statusCode.should.be.eql(200);
-      response.message.should.be.eql('Removed');
+      responseRemove = { response, statusCode };
       done();
     });
   });
 
-  Then('It shouldn\'t appear when I search the facilities of user with ID {int}', (int, done) => {
-    const userId = int;
-    facilityRepository.findByUserId(userId, (err, facilities) => {
-      facilities.should.be.empty();
-      done();
+  Then(/^facility with ID (\d+) shouldn't exist$/, (facilityId, done) => {
+    facilityRepository.findById(facilityID, (err, facility) => {
+      if (!err) {
+        should.not.exist(facility);
+        done();
+      } else done(err);
     });
   });
 
-  Then('It shouldn\'t appear any unit with facility ID {int}', function (int, done) {
-    const facilityId = int;
+  Then(/^shouldn't exist any unit with facility ID (\d+)$/, function (facilityId, done) {
     unitRepository.findByFacilityId(facilityId, (err, units) => {
-      units.should.be.empty();
-      done();
+      if (err) done(err);
+      else {
+        units.should.be.empty();
+        done();
+      }
     });
   });
+
+  Then(/^I should receive a Not Found error with code (\d+) and message "([^"]*)"$/, function (errorCode, message, done) {
+    responseRemove.statusCode.should.be.eql(errorCode);
+    responseRemove.response.error.should.be.eql(message);
+    done();
+  });
+
 });
