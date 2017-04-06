@@ -15,8 +15,13 @@ module.exports = (userServices) => {
     });
   };
 
+  const _sendResponse = (token, cb) => {
+    cb(null, token, "Login Successful");
+  };
+
   return (email, password, callback) => waterfall([
      next => _authenticate(email, password, next),
-     (user, next) => _generateToken(user, next)
+     (user, next) => _generateToken(user, next),
+     (token, next) => _sendResponse(token, next)
   ], callback);
 };
