@@ -24,11 +24,14 @@ defineSupportCode(({ When, Then }) => {
       });
   });
 
-  Then('I should receive a confirm message and a token', function (done) {
-      should.not.exist(responsePl.error);
-      responsePl.statusCode.should.be.eql(200);
-      responsePl.response.should.have.key('token');
-      done();
+  Then('I should receive a token and {stringInDoubleQuotes} as message', function (stringInDoubleQuotes, done) {
+    const message = stringInDoubleQuotes;
+    should.not.exist(responsePl.error);
+    responsePl.statusCode.should.be.eql(200);
+    responsePl.response.data.should.not.be.empty();
+    responsePl.response.message.should.be.eql(message);
+    done();
+    done();
   });
 
   Then('I should receive an Unauthorized error with code {int} and message {stringInDoubleQuotes}', function (int, stringInDoubleQuotes, done) {
