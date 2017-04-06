@@ -15,7 +15,7 @@ module.exports = FacilityEntity => {
     const query = { user_id: userId };
     FacilityEntity.find(query, (err, facilities) => {
       if(err) cb(err);
-      else if(facilities.length) cb(null, facilities[0]);
+      else if(facilities.length === 1) cb(null, facilities[0]);
       else cb(null, facilities);
     });
   };
