@@ -38,13 +38,14 @@ defineSupportCode(({ Given, When, Then }) => {
     });
 
     Then('I should be able to login with {stringInDoubleQuotes} as username and {stringInDoubleQuotes} as password', function (stringInDoubleQuotes, stringInDoubleQuotes2, done) {
-        const email = stringInDoubleQuotes;
-        const password = stringInDoubleQuotes2;
-        const payload = { email, password };
+        const payload = {
+            email: stringInDoubleQuotes,
+            password: stringInDoubleQuotes2
+        };
         request.post(PATHS.LOGIN_PATH, payload, null, (error, response, statusCode) => {
            should.not.exists(error);
            statusCode.should.be.eql(200);
-           response.should.have.key('token');
+           response.data.should.not.be.empty();
            done();
         });
     });
