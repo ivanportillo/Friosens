@@ -8,7 +8,7 @@ module.exports = FacilityEntity => {
 
   const findById = (facilityId, cb) => {
     const query = { id: facilityId };
-    FacilityEntity.findOne(query, cb);
+    FacilityEntity.one(query, cb);
   };
 
   const findByUserId = (userId, cb) => {
@@ -30,5 +30,5 @@ module.exports = FacilityEntity => {
     });
   };
 
-  return { create, findByUserId, removeById };
+  return { create, findByUserId, removeById, findById };
 };
