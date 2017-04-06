@@ -35,7 +35,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   When(/^I remove the facility with ID (\d+)$/, (facilityId, done) => {
-    request.del(`${PATHS.FACILITIES_PATH}/${facilityId}`, null, null, (error, response, statusCode) => {
+    request.del(`${PATHS.FACILITIES_PATH}/${facilityId}`, null, token, (error, response, statusCode) => {
       should.not.exists(error);
       responseRemove = { response, statusCode };
       done();
@@ -43,7 +43,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^facility with ID (\d+) shouldn't exist$/, (facilityId, done) => {
-    facilityRepository.findById(facilityID, (err, facility) => {
+    facilityRepository.findById(facilityId, (err, facility) => {
       if (!err) {
         should.not.exist(facility);
         done();
