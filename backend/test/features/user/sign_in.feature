@@ -11,7 +11,7 @@ Feature: Sign in
 
   Scenario: Sign in with a valid user
     When I sign in with email "i32polei@uco.es" and password "pass"
-    Then I should receive a confirm message and a token
+    Then I should receive a token and "Login Successful" as message
 
   Scenario: Sign in using a incorrect password
     When I sign in with email "i32polei@uco.es" and password "badPass"
