@@ -2,13 +2,26 @@
 
 const waterfall = require('async').waterfall;
 const eachSeries = require('async').eachSeries;
+const NotFoundError = require('spur-errors').NotFoundError;
 
 module.exports = (facilityRepository, unitRepository) => {
+  const _validFacility = (facilityId, cb) => {
+    facilityRepository.findById(facilityId, (err, facility) => {
+      if(err) cb(err);
+      else if(!facility) cb(NotFoundError.create('Facility not found'));
+      else cb();
+    });
+  };
+
   const _removeUnits = (facilityId, cb) => {
     unitRepository.findByFacilityId(facilityId, (err, units) => {
-      eachSeries(units, (unit, next) => {
-        unit.remove(next);
-      }, cb);
+      if(err) cb(err);
+      else if(!units.length) cb(NotFoundError.create('Not found units'));
+      else {
+        eachSeries(units, (unit, next) => {
+          unit.remove(next);
+        }, cb);
+      }
     });
   };
 
@@ -17,6 +30,7 @@ module.exports = (facilityRepository, unitRepository) => {
   };
 
   return (facilityId, cb) => waterfall([
+    next => _validFacility(facilityId, next),
     next => _removeUnits(facilityId, next),
     next => _removeFacility(facilityId, next)
   ], cb);
