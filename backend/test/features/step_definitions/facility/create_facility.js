@@ -14,7 +14,7 @@ const request = require('../../support/request');
 defineSupportCode(({ Given, When, Then }) => {
   let token;
   let responseCreate;
-  Given('[create-facility] I\'m logged in as an administrator', function (done) {
+  Given(/^\[create\-facility\] I'm logged in as an administrator$/, done => {
       const user = {
           first_name: 'Nombre',
           last_name: 'Apellidos',
@@ -31,7 +31,7 @@ defineSupportCode(({ Given, When, Then }) => {
           }
       });
   });
-  When('I create to the user with ID {int} the following facility:', (int, table, done) => {
+  When(/^I create to the user with ID (\d+) the following facility:$/, (int, table, done) => {
     const payload = {
       name: table.hashes()[0].name,
       location: table.hashes()[0].location,
@@ -44,7 +44,7 @@ defineSupportCode(({ Given, When, Then }) => {
     });
   });
 
-  Then('User with ID {int} should have one facility with name {stringInDoubleQuotes}', (int, stringInDoubleQuotes, done) => {
+  Then(/^User with ID (\d+) should have one facility with name "([^"]*)"$/, (int, stringInDoubleQuotes, done) => {
     const userId = int;
     const facilityName = stringInDoubleQuotes;
       facilityRepository.findByUserId(userId, (err, facility) => {
@@ -57,7 +57,7 @@ defineSupportCode(({ Given, When, Then }) => {
       });
   });
 
-  Then('the response is a validation error with code {int} and message {stringInDoubleQuotes}', function (int, stringInDoubleQuotes, done) {
+  Then(/^the response is a validation error with code (\d+) and message "([^"]*)"$/, (int, stringInDoubleQuotes, done) => {
     const errorCode = int;
     const error = stringInDoubleQuotes;
     responseCreate.statusCode.should.be.eql(errorCode);

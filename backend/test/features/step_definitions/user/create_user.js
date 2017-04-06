@@ -11,7 +11,7 @@ const tokenUt = require('../../../utils/factories/User_factory')();
 defineSupportCode(({ Given, When, Then }) => {
     let token;
     let responseCreate;
-    Given('[create-user] I\'m logged in as an administrator', function (done) {
+    Given(/^\[create\-user\] I'm logged in as an administrator$/, function (done) {
         const user = {
             first_name: 'Nombre',
             last_name: 'Apellidos',
@@ -29,7 +29,7 @@ defineSupportCode(({ Given, When, Then }) => {
         });
     });
 
-    When('I create a new user with the following data:', function (table, done) {
+    When(/^I create a new user with the following data:$/, function (table, done) {
         const user = table.hashes()[0];
         request.post(PATHS.REGISTER_PATH, user, token, (error, response, statusCode) => {
             responseCreate = { error, response, statusCode };
@@ -37,7 +37,7 @@ defineSupportCode(({ Given, When, Then }) => {
         });
     });
 
-    Then('I should be able to login with {stringInDoubleQuotes} as username and {stringInDoubleQuotes} as password', function (stringInDoubleQuotes, stringInDoubleQuotes2, done) {
+    Then(/^I should be able to login with "([^"]*)" as username and "([^"]*)" as password$/, function (stringInDoubleQuotes, stringInDoubleQuotes2, done) {
         const payload = {
             email: stringInDoubleQuotes,
             password: stringInDoubleQuotes2
@@ -50,7 +50,7 @@ defineSupportCode(({ Given, When, Then }) => {
         });
     });
 
-    Then('[create-user] I should receive a validation error with code {int} and message {stringInDoubleQuotes}', function (int, stringInDoubleQuotes, done) {
+    Then(/^\[create\-user\] I should receive a validation error with code (\d+) and message "([^"]*)"$/, function (int, stringInDoubleQuotes, done) {
         const errorCode = int;
         const message = stringInDoubleQuotes;
         responseCreate.statusCode.should.be.eql(errorCode);

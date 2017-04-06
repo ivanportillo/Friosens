@@ -8,7 +8,7 @@ const userRepository = repositories.User;
 const encrypt = require('../../../../infrastructure/passEncrypt');
 
 defineSupportCode(({ Given }) => {
-    Given('there is the following users:', function (table, callback) {
+    Given(/^there is the following users:$/, function (table, callback) {
         const users = table.hashes();
         async.each(users, (user, done) => {
             encrypt.encrypt(user.password, (err, hash, salt) => {

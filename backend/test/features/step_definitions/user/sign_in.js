@@ -8,7 +8,7 @@ const request = require('../../support/request');
 
 defineSupportCode(({ When, Then }) => {
   let responsePl = {};
-  When('I sign in with email {stringInDoubleQuotes} and password {stringInDoubleQuotes}', function (stringInDoubleQuotes, stringInDoubleQuotes2, done) {
+  When(/^I sign in with email "([^"]*)" and password "([^"]*)"$/, function (stringInDoubleQuotes, stringInDoubleQuotes2, done) {
       const payload = {
           email: stringInDoubleQuotes,
           password: stringInDoubleQuotes2
@@ -24,7 +24,7 @@ defineSupportCode(({ When, Then }) => {
       });
   });
 
-  Then('I should receive a token and {stringInDoubleQuotes} as message', function (stringInDoubleQuotes, done) {
+  Then(/^I should receive a token and "([^"]*)" as message$/, function (stringInDoubleQuotes, done) {
     const message = stringInDoubleQuotes;
     should.not.exist(responsePl.error);
     responsePl.statusCode.should.be.eql(200);
@@ -34,7 +34,7 @@ defineSupportCode(({ When, Then }) => {
     done();
   });
 
-  Then('I should receive an Unauthorized error with code {int} and message {stringInDoubleQuotes}', function (int, stringInDoubleQuotes, done) {
+  Then(/^I should receive an Unauthorized error with code (\d+) and message "([^"]*)"$/, function (int, stringInDoubleQuotes, done) {
       const errorCode = int;
       const error = stringInDoubleQuotes;
       should.exist(responsePl.response.error);
