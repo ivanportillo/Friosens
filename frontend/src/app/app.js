@@ -4,7 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import 'normalize.css';
 
@@ -28,6 +28,6 @@ sagaMiddleware.run(sagas);
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      {routes()}
+      {routes(store)}
     </Router>
   </Provider>, document.getElementById('root'));
