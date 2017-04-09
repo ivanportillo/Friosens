@@ -9,7 +9,7 @@
       "password": "mysql"
     },
     "password": {
-      "salt_rounds": 10,
+      "salt_rounds": 10
     },
     "token": {
       "secret": "FR10S3NS_PROD",
