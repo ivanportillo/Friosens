@@ -1,9 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
+import Login from 'components/Login';
 
 const routes = () =>
-  <Route path="/" component={<p>Holi</p>}>
-    <IndexRoute component={<p>Holu</p>} />
-  </Route>;
+  <Route path="/" component={Login} />;
 
 export default routes;
