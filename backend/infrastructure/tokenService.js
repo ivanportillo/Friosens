@@ -13,7 +13,9 @@ const create = (payload, ttl = DEFAULT_TTL, cb) => {
 };
 
 const verify = (token, cb) => {
-  jwt.verify(token, config.app.token.secret, (err, payload) => {
+  jwt.verify(token, config.app.token.secret, {
+    ignoreExpiration: (process.env.NODE_ENV === 'development'),
+  } ,(err, payload) => {
     if (err) cb(err);
     else cb(null, payload);
   });
