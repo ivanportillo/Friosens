@@ -11,34 +11,44 @@ module.exports = {
   entry: APP_DIR + '/app.js',
   resolve: {
     extensions: ['.js', '.css'],
-    modules: ['src', 'node_modules']
+    modules: ['node_modules', APP_DIR ]
   },
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /\.js?$/,
-      include: APP_DIR,
-      loader: 'babel-loader'
-    }, {
-      test: /\.css$/,
-      include: /node_modules/,
-      loaders: ['style-loader', 'css-loader']
-    }, {
-      test: /\.css$/,
-      include: APP_DIR,
-      loaders: ['style-loader', {
-        loader: 'css-loader',
-        query: { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' }
-      }]
-    }, {
-      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=100000'
-    }]
+    rules: [
+      {
+        test: /\.js?$/,
+        include: APP_DIR,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: "[name]--[local]--[hash:base64:8]"
+            }
+          },
+          "postcss-loader"
+        ]
+      }
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: 'src/app/index.html', inject: true })
+    new HtmlWebpackPlugin({ template: 'src/app/index.html', inject: true }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.LoaderOptionsPlugin({ debug: true }),
   ]
 }
