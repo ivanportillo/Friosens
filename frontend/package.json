@@ -11,7 +11,7 @@
     "lint:js": "eslint src"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.16.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "lodash": "^4.17.4",
     "normalize.css": "^6.0.0",
