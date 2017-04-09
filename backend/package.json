@@ -4,7 +4,8 @@
     "description": "TFG",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --inspect index.js",
+        "start": "nodemon index.js",
+        "dev": "NODE_ENV=development nodemon index.js",
         "test:all": "NODE_ENV=test cucumber.js ./test/features --tags @sprint1",
         "test:working": "NODE_ENV=test cucumber.js ./test/features --tags @working"
     },
@@ -20,6 +21,7 @@
         "body-parser": "^1.17.1",
         "boom": "^4.2.0",
         "config": "^1.25.1",
+        "cors": "^2.8.3",
         "express": "^4.15.2",
         "jsonwebtoken": "^7.3.0",
         "mysql": "^2.13.0",
