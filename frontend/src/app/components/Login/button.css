@@ -1,0 +1,6 @@
+.primary:not([disabled]) {
+    &.raised,
+    &.floating {
+        background: #ffa000;
+    }
+}

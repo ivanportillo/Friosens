@@ -1,0 +1,6 @@
+.bar {
+    &::before,
+    &::after {
+        background-color: #ffa000;
+    }
+}

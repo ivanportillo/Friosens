@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.layout {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #1675d1;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBox {
+    background-color: white;
+    padding: 2em;
+    width: 30em;
+    border-radius: 3px;
+}
