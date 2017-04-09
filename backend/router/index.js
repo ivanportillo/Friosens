@@ -7,6 +7,7 @@ const usersController = require('./controllers/users');
 const middlewares = require('./middlewares');
 const allowAccessAdmin = middlewares.allowAccessAdmin;
 const allowAccessUser = middlewares.allowAccessUser;
+const requireAuth = middlewares.requireAuth;
 
 module.exports = router => {
   // FACILITY
@@ -17,6 +18,7 @@ module.exports = router => {
   // AUTH
   router.post(PATHS.LOGIN_PATH, usersController.login);
   router.post(PATHS.REGISTER_PATH, allowAccessAdmin, usersController.register);
+  router.get(PATHS.ACCOUNT_PATH, requireAuth, usersController.getAccount);
 
   return router;
 };
