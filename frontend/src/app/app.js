@@ -8,7 +8,7 @@ import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import 'normalize.css';
 
-import routes from 'routes';
+import createRoutes from 'routes';
 import reducers from 'reducers';
 import sagas from 'sagas';
 
@@ -23,11 +23,13 @@ const store = createStore(
   ),
 );
 
+const routes = createRoutes(store);
+
 sagaMiddleware.run(sagas);
 
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      {routes(store)}
+      {routes}
     </Router>
   </Provider>, document.getElementById('root'));
