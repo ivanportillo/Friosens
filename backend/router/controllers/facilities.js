@@ -5,6 +5,9 @@ const createFacility = facilitiesActions.createFacility;
 const removeFacility = facilitiesActions.removeFacility;
 const showFacilities = facilitiesActions.showFacilities;
 
+const unitsActions = require('../../action/unit');
+const showUnits = unitsActions.showUnits;
+
 const responseBuilder = require('../../utils/responseBuilder');
 
 module.exports = {
@@ -20,5 +23,8 @@ module.exports = {
   },
   showFacilities: (req, res) => {
     showFacilities(req.payload.id, responseBuilder.createResponse(req, res));
+  },
+  getUnits: (req, res) => {
+    showUnits(req.params.id, responseBuilder.createResponse(req, res));
   }
 };
