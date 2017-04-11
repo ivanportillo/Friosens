@@ -5,7 +5,7 @@ Feature: Show facilities
   to have a global vision of my facilities
 
   Background:
-    Given I'm logged as user ID 15
+    Given [show_facilities] I'm logged as user ID 15
     And the following facilities:
     | id | name           | location          | user_id |
     |  1 | Sala principal | Cubierta exterior |      15 |
