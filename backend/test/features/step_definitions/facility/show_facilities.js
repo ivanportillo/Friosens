@@ -11,7 +11,7 @@ const request = require('../../support/request');
 defineSupportCode(({ Given, When, Then }) => {
   let token;
   let showResponse;
-  Given(/^I'm logged as user ID (\d+)$/, (id, done) => {
+  Given(/^\[show_facilities\] I'm logged as user ID (\d+)$/, (id, done) => {
     const user = {
       id,
       first_name: 'Nombre',
