@@ -3,6 +3,7 @@
 const usersActions = require('../../action/user');
 const signin = usersActions.signin;
 const register = usersActions.register;
+const getAccount = usersActions.getAccount;
 
 const responseBuilder = require('../../utils/responseBuilder');
 
@@ -22,5 +23,8 @@ module.exports = {
         password: req.body.password,
     };
     register(user, responseBuilder.createResponse(req, res));
+  },
+  getAccount: (req, res) => {
+    getAccount(req.payload.id, responseBuilder.createResponse(req, res));
   }
 };
