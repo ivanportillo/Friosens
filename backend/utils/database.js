@@ -7,8 +7,8 @@ let db;
 module.exports = {
   getDb: () => {
     if(db) return db;
-    db = orm.connect(`mysql://${dbCfg.user}:${dbCfg.password}@${dbCfg.host}/${dbCfg.database}`);
-
+    const connectString = `mysql://${dbCfg.user}:${dbCfg.password}@${dbCfg.host}/${dbCfg.database}`;
+    db = orm.connect(connectString);
     return db;
   }
 };
