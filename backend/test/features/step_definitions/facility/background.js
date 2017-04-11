@@ -57,4 +57,15 @@ defineSupportCode(({ Given }) => {
       });
     }, done);
   });
+
+  //SHOW_UNITS
+  Given(/^the following units:$/, (table, done) => {
+    const units = table.hashes();
+    async.each(units, (unit, cb) => {
+      createUnit(unit, unit.facility_id, err => {
+        if (err) cb(err);
+        else cb();
+      });
+    }, done);
+  });
 });
