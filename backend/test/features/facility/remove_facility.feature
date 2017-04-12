@@ -9,10 +9,10 @@ Feature: Remove a facility
     And there is the following user:
     | id | first_name | last_name | enabled | admin | email           | password | salt |
     | 20 | Iván       | Portillo  | 1       | 1     | i32polei@uco.es | pass     | salt |
-    Given the following facility:
+    And the following facility:
     | id | name    | location | user_id |
     | 20 | Entrada | Cubierta |      20 |
-    Given the following unit:
+    And the following unit:
     | name              | refrigerant | facility_id |
     | Planta enfriadora |       R410A |          20 |
 
