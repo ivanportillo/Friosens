@@ -41,7 +41,7 @@ defineSupportCode(({ Given }) => {
 
   Given(/^the following unit:$/, (table, done) => {
     const unit = table.hashes()[0];
-    createUnit(unit, unit.facility_id, err => {
+    createUnit(unit.facility_id, unit, err => {
       if (err) done(err);
       else done();
     });
@@ -62,7 +62,7 @@ defineSupportCode(({ Given }) => {
   Given(/^the following units:$/, (table, done) => {
     const units = table.hashes();
     async.each(units, (unit, cb) => {
-      createUnit(unit, unit.facility_id, err => {
+      createUnit(unit.facility_id, unit, err => {
         if (err) cb(err);
         else cb();
       });
