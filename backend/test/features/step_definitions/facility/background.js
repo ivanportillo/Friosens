@@ -51,7 +51,7 @@ defineSupportCode(({ Given }) => {
   Given(/^the following facilities:$/, (table, done) => {
     const facilities = table.hashes();
     async.each(facilities, (facility, cb) => {
-      createFacility(facility, facility.user_id, err => {
+      createFacility(facility, facility.organization_id, err => {
         if (err) cb(err);
         else cb();
       });

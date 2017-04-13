@@ -11,15 +11,16 @@ const request = require('../../support/request');
 defineSupportCode(({ Given, When, Then }) => {
   let token;
   let showResponse;
-  Given(/^\[show_facilities\] I'm logged as user ID (\d+)$/, (id, done) => {
+  Given(/^\[show_facilities\] I'm logged as user ID (\d+) with organization ID (\d+)$/, (userId, organizationId, done) => {
     const user = {
-      id,
+      id: userId,
       first_name: 'Nombre',
       last_name: 'Apellidos',
       enabled: true,
       admin: false,
       email: 'email@dominio.es',
-      password: 'password'
+      password: 'password',
+      organization_id: organizationId
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
       if(err) done(err);
