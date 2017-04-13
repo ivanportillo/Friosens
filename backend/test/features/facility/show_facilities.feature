@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Show facilities
   As user
   I want to be able to show my facilities
