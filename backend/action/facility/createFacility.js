@@ -9,8 +9,8 @@ module.exports = facilityRepository => {
     else cb();
   };
 
-  const _createFacility = (facility, userId, cb) => {
-    facilityRepository.create(facility, userId, cb);
+  const _createFacility = (facility, organizationId, cb) => {
+    facilityRepository.create(facility, organizationId, cb);
   };
 
   return (facility, userId, callback) => waterfall([

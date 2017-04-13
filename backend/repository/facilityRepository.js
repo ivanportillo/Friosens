@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = FacilityEntity => {
-  const create = (facility, userId, cb) => {
-    facility.user_id = userId;
+  const create = (facility, organizationId, cb) => {
+    facility.organization_id = organizationId;
     FacilityEntity.create(facility, cb);
   };
 
@@ -11,8 +11,8 @@ module.exports = FacilityEntity => {
     FacilityEntity.one(query, cb);
   };
 
-  const findByUserId = (userId, cb) => {
-    const query = { user_id: userId };
+  const findByOrganizationId = (organizationId, cb) => {
+    const query = { organization_id: organizationId };
     FacilityEntity.find(query, (err, facilities) => {
       if(err) cb(err);
       else if(facilities.length === 1) cb(null, facilities[0]);
@@ -30,5 +30,5 @@ module.exports = FacilityEntity => {
     });
   };
 
-  return { create, findByUserId, removeById, findById };
+  return { create, findByOrganizationId, removeById, findById };
 };

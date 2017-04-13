@@ -18,7 +18,7 @@ module.exports = {
       name: req.body.name,
       location: req.body.location
     };
-    createFacility(facility, req.body.userId, responseBuilder.createResponse(req, res));
+    createFacility(facility, req.body.organizationId, responseBuilder.createResponse(req, res));
   },
   removeFacility: (req, res) => {
     removeFacility(req.params.id, responseBuilder.createResponse(req, res));
