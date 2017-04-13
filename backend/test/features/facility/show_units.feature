@@ -4,10 +4,13 @@ Feature: Show units
   I want to be able to show the units of a facility
 
   Background:
-    Given [show_units] I'm logged as user ID 20
+    Given the following organization:
+    | id | name           | type    |
+    | 20 | MyOrganization | company |
+    Given [show_units] I'm logged as user ID 20 with organization ID 20
     And the following facility:
-    | id | name           | location          | user_id |
-    | 20 | Sala principal | Cubierta exterior |      20 |
+    | id | name           | location          | organization_id |
+    | 20 | Sala principal | Cubierta exterior |              20 |
 
   Scenario: Show units
     Given the following units:
