@@ -3,6 +3,7 @@
 const PATHS = require('./paths');
 const facilitiesController = require('./controllers/facilities');
 const usersController = require('./controllers/users');
+const organizationsController = require('./controllers/organizations');
 
 const middlewares = require('./middlewares');
 const allowAccessAdmin = middlewares.allowAccessAdmin;
@@ -24,6 +25,9 @@ module.exports = router => {
   router.post(PATHS.LOGIN_PATH, usersController.login);
   router.post(PATHS.REGISTER_PATH, allowAccessAdmin, usersController.register);
   router.get(PATHS.ACCOUNT_PATH, requireAuth, usersController.getAccount);
+
+  // ORGANIZATIONS
+  router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
 
   return router;
 };
