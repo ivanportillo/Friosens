@@ -18,6 +18,7 @@ module.exports = router => {
   // UNITS (INSIDE FACILITY)
   router.get(PATHS.FACILITY_UNITS_PATH, allowAccessUser, facilitiesController.getUnits);
   router.post(PATHS.FACILITY_UNITS_PATH, allowAccessAdmin, facilitiesController.createUnit);
+  router.delete(PATHS.FACILITY_UNIT_PATH, allowAccessAdmin, facilitiesController.removeUnit);
 
   // AUTH
   router.post(PATHS.LOGIN_PATH, usersController.login);

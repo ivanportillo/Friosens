@@ -8,6 +8,7 @@ const showFacilities = facilitiesActions.showFacilities;
 const unitsActions = require('../../action/unit');
 const showUnits = unitsActions.showUnits;
 const createUnit = unitsActions.createUnit;
+const removeUnit = unitsActions.removeUnit;
 
 const responseBuilder = require('../../utils/responseBuilder');
 
@@ -36,5 +37,8 @@ module.exports = {
       mark: req.body.mark
     };
     createUnit(req.params.id, unit, responseBuilder.createResponse(req, res));
+  },
+  removeUnit: (req, res) => {
+    removeUnit(req.params.id, req.params.unit, responseBuilder.createResponse(req, res));
   }
 };
