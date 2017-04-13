@@ -11,7 +11,8 @@ module.exports = tokenService => {
       company: user.company,
       telephone: user.telephone,
       email: user.email,
-      admin: user.admin
+      admin: user.admin,
+      organization_id: user.organization_id
     };
     tokenService.create(payload, ttl, (err, token) => {
       if (err) cb(err);

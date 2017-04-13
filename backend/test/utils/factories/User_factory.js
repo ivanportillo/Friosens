@@ -12,8 +12,14 @@ module.exports = () => {
 
   const createLogged = (user, cb) => {
     _createUser(user, (err, userCreated) => {
+        const userPayload = {
+          id: userCreated.id,
+          email: userCreated.email,
+          admin: userCreated.admin,
+          organization_id: userCreated.organization_id
+        };
         if (err) cb(err);
-        else _createToken({ id: userCreated.id, email: userCreated.email, admin: userCreated.admin }, (err, token) => {
+        else _createToken(userPayload, (err, token) => {
             if (err) cb(err);
             else cb(null, token);
         });
