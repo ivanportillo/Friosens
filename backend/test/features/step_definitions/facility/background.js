@@ -32,7 +32,7 @@ defineSupportCode(({ Given }) => {
   //REMOVE_FACILITY
   Given(/^the following facility:$/, (table, done) => {
     const facility = table.hashes()[0];
-    createFacility(facility, facility.user_id, err => {
+    createFacility(facility, facility.organization_id, err => {
       if (err) done(err);
       else done();
     });

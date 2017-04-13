@@ -1,4 +1,4 @@
-@sprint1
+@sprint1 @working
 Feature: Remove a facility
   As an administrator
   I want to be able to remove facilities
@@ -6,12 +6,12 @@ Feature: Remove a facility
 
   Background:
     Given [remove-facility] I'm logged in as an administrator
-    And there is the following user:
-    | id | first_name | last_name | enabled | admin | email           | password | salt |
-    | 20 | Iván       | Portillo  | 1       | 1     | i32polei@uco.es | pass     | salt |
+    And the following organization:
+    | id | name           | type    |
+    | 20 | MyOrganization | company |
     And the following facility:
-    | id | name    | location | user_id |
-    | 20 | Entrada | Cubierta |      20 |
+    | id | name    | location | organization_id |
+    | 20 | Entrada | Cubierta |              20 |
     And the following unit:
     | name              | refrigerant | facility_id |
     | Planta enfriadora |       R410A |          20 |
