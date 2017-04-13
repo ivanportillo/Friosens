@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Remove a facility
   As an administrator
   I want to be able to remove facilities
