@@ -24,7 +24,7 @@ module.exports = {
     removeFacility(req.params.id, responseBuilder.createResponse(req, res));
   },
   showFacilities: (req, res) => {
-    showFacilities(req.payload.id, responseBuilder.createResponse(req, res));
+    showFacilities(req.payload.organization_id, responseBuilder.createResponse(req, res));
   },
   getUnits: (req, res) => {
     showUnits(req.params.id, responseBuilder.createResponse(req, res));
