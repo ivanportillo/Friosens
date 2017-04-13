@@ -31,11 +31,11 @@ defineSupportCode(({ Given, When, Then }) => {
           }
       });
   });
-  When(/^I create to the user with ID (\d+) the following facility:$/, (int, table, done) => {
+  When(/^I create to the organization with ID (\d+) the following facility:$/, (int, table, done) => {
     const payload = {
       name: table.hashes()[0].name,
       location: table.hashes()[0].location,
-      userId: int
+      organizationId: int
     };
     request.post(PATHS.FACILITIES_PATH, payload, token, (error, response, statusCode) => {
       should.not.exist(error);
@@ -44,13 +44,13 @@ defineSupportCode(({ Given, When, Then }) => {
     });
   });
 
-  Then(/^User with ID (\d+) should have one facility with name "([^"]*)"$/, (int, stringInDoubleQuotes, done) => {
-    const userId = int;
+  Then(/^Organization with ID (\d+) should have one facility with name "([^"]*)"$/, (int, stringInDoubleQuotes, done) => {
+    const organizationId = int;
     const facilityName = stringInDoubleQuotes;
-      facilityRepository.findByUserId(userId, (err, facility) => {
+      facilityRepository.findByOrganizationId(organizationId, (err, facility) => {
           if(err) done(err);
           else {
-              facility.user_id.should.be.eql(userId);
+              facility.organization_id.should.be.eql(organizationId);
               facility.name.should.be.eql(facilityName);
               done();
           }
