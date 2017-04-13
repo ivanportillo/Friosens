@@ -5,10 +5,11 @@ const async = require('async');
 
 const repositories = require('../../../../repository');
 const userRepository = repositories.User;
+const organizationRepository = repositories.Organization;
 const encrypt = require('../../../../infrastructure/passEncrypt');
 
 defineSupportCode(({ Given }) => {
-    Given(/^there is the following users:$/, function (table, callback) {
+    Given(/^there is the following users:$/, (table, callback) => {
         const users = table.hashes();
         async.each(users, (user, done) => {
             encrypt.encrypt(user.password, (err, hash, salt) => {
@@ -24,5 +25,16 @@ defineSupportCode(({ Given }) => {
                 }
             });
         }, callback);
+    });
+
+    Given(/^the following organization:$/, (table, done) => {
+      const organization = table.hashes()[0];
+      organizationRepository.create(organization, (err, organizationCreated) => {
+        if (err) done(err);
+        else {
+          organization.should.be.eql(organizationCreated);
+          done();
+        }
+      });
     });
 });
