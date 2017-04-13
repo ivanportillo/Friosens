@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Remove unit
   As administrator
   I want to be able to remove a unit when it is useless
