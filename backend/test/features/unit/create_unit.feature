@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Create unit
   As administrator
   I want to be able to create units to the facility of a organization
