@@ -4,8 +4,6 @@ module.exports = (orm, db) => {
   const User = db.define('user', {
     first_name: { type: 'text', required: true },
     last_name: { type: 'text', required: true },
-    company: { type: 'text' },
-    address: { type: 'text' },
     telephone: { type: 'text' },
     enabled: { type: 'boolean', required: true },
     admin: { type: 'boolean', required: true },
@@ -21,4 +19,6 @@ module.exports = (orm, db) => {
       }
     }
   });
+
+  User.hasOne('organization', db.models.organization, { reverse: 'users' });
 };

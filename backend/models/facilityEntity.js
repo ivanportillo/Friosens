@@ -6,5 +6,5 @@ module.exports = (orm, db) => {
     location: { type: 'text' }
   });
 
-  Facility.hasOne('user', db.models.user, { required: true, reverse: 'facilites' });
+  Facility.hasOne('organization', db.models.organization, { required: true, reverse: 'facilities' });
 };
