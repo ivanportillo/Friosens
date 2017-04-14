@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Create organization
   As administrator
   I want to be able to create a organization
