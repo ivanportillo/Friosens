@@ -5,6 +5,11 @@ module.exports = UnitEntity => {
     unit.facility_id = facilityId;
     UnitEntity.create(unit, cb);
   };
+  
+  const findOneById = (unitId, cb) => {
+    const query = { id: unitId };
+    UnitEntity.one(query, cb);
+  };
 
   const findByFacilityId = (facilityId, cb) => {
     const query = { facility_id: facilityId };
@@ -26,5 +31,12 @@ module.exports = UnitEntity => {
     UnitEntity.find(query).remove(cb);
   };
 
-  return { create, findByFacilityId, findByFacilityAndUnitId, remove, findByName };
+  return {
+    create,
+    findByFacilityId,
+    findByFacilityAndUnitId,
+    remove,
+    findByName,
+    findOneById
+  };
 };
