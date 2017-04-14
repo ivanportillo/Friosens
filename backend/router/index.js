@@ -28,6 +28,7 @@ module.exports = router => {
 
   // ORGANIZATIONS
   router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
+  router.delete(PATHS.ORGANIZATION_PATH, allowAccessAdmin, organizationsController.removeOrganization);
 
   return router;
 };
