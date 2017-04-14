@@ -14,7 +14,7 @@ module.exports = (orm, db) => {
     current_3: { type: 'number' }
   },{
     hooks: {
-      beforeValidation: () => {
+      beforeValidation: function () {
         this.created_at = new Date();
       }
     }
