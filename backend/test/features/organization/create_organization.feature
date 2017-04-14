@@ -18,16 +18,16 @@ Feature: Create organization
       When I create the following organization:
       | type    |
       | company |
-      Then I should receive a error with status code 401 and "Name is required" as message
+      Then I should receive a error with status code 400 and "Name is required" as message
 
   Scenario: Create a organization without name
     When I create the following organization:
     | name           |
     | MyOrganization |
-    Then I should receive a error with status code 401 and "Type is required" as message
+    Then I should receive a error with status code 400 and "Type is required" as message
 
   Scenario: Create a organization with bad type
     When I create the following organization:
     | name           | type    |
     | MyOrganization | badtype |
-    Then I should receive a error with status code 401 and "Invalid type" as message
+    Then I should receive a error with status code 400 and "Invalid type" as message
