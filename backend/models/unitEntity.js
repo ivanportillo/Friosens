@@ -7,7 +7,8 @@ module.exports = (orm, db) => {
     refrigerant: { type: 'text', required: true },
     mark: { type: 'text' },
     unit_model: { type: 'text' },
-    serial_number: { type: 'text' }
+    serial_number: { type: 'text' },
+    token: { type: 'text' }
   });
 
   Unit.hasOne('facility', db.models.facility, { required: true, reverse: 'units' });
