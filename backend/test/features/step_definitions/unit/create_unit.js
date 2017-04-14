@@ -9,6 +9,7 @@ const PATHS = require('../../../../router/paths');
 const request = require('../../support/request');
 
 const unitRepository = require('../../../../repository').Unit;
+const unitServices = require('../../../../services/unit');
 
 defineSupportCode(({ Given, When, Then }) => {
   let token;
@@ -54,6 +55,19 @@ defineSupportCode(({ Given, When, Then }) => {
         units[0].name.should.be.eql(unitName);
         done();
       }
+    });
+  });
+
+  Then(/^unit with name "([^"]*)" should have a valid token$/, (unitName, done) => {
+    unitRepository.findByName(unitName, (err, unit) => {
+      if (err) cb(err);
+      else unitServices.tokenManager.verify(unit.token, (err, payload) => {
+        if (err) cb(err);
+        else {
+          payload.should.have.key('id');
+          done();
+        }
+      });
     });
   });
 
