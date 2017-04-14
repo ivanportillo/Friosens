@@ -4,11 +4,13 @@ const PATHS = require('./paths');
 const facilitiesController = require('./controllers/facilities');
 const usersController = require('./controllers/users');
 const organizationsController = require('./controllers/organizations');
+const readingsController = require('./controllers/readings');
 
 const middlewares = require('./middlewares');
 const allowAccessAdmin = middlewares.allowAccessAdmin;
 const allowAccessUser = middlewares.allowAccessUser;
 const requireAuth = middlewares.requireAuth;
+const onlyDevice = middlewares.onlyDevice;
 
 module.exports = router => {
   // FACILITY
@@ -29,6 +31,9 @@ module.exports = router => {
   // ORGANIZATIONS
   router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
   router.delete(PATHS.ORGANIZATION_PATH, allowAccessAdmin, organizationsController.removeOrganization);
+
+  // READINGS
+  router.post(PATHS.REGISTER_READING_PATH, onlyDevice, readingsController.registerReading);
 
   return router;
 };
