@@ -16,10 +16,15 @@ module.exports = UnitEntity => {
     UnitEntity.find(query, cb);
   };
 
+  const findByName = (name, cb) => {
+    const query = { name };
+    UnitEntity.one(query, cb);
+  };
+
   const remove = (unitId, cb) => {
     const query = {id: unitId};
     UnitEntity.find(query).remove(cb);
   };
 
-  return { create, findByFacilityId, findByFacilityAndUnitId, remove };
+  return { create, findByFacilityId, findByFacilityAndUnitId, remove, findByName };
 };
