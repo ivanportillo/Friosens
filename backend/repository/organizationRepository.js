@@ -5,5 +5,10 @@ module.exports = OrganizationEntity => {
     OrganizationEntity.create(organization, cb);
   };
 
-  return { create };
+  const findOneByName = (name, cb) => {
+    const query = { name };
+    OrganizationEntity.one(query, cb);
+  };
+
+  return { create, findOneByName };
 };
