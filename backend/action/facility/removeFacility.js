@@ -6,7 +6,7 @@ const NotFoundError = require('spur-errors').NotFoundError;
 
 module.exports = (facilityRepository, unitRepository) => {
   const _validFacility = (facilityId, cb) => {
-    facilityRepository.findById(facilityId, (err, facility) => {
+    facilityRepository.findOneById(facilityId, (err, facility) => {
       if(err) cb(err);
       else if(!facility) cb(NotFoundError.create('Facility not found'));
       else cb();

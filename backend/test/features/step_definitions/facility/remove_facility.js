@@ -43,9 +43,9 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^facility with ID (\d+) shouldn't exist$/, (facilityId, done) => {
-    facilityRepository.findById(facilityId, (err, facility) => {
+    facilityRepository.findById(facilityId, (err, facilities) => {
       if (!err) {
-        should.not.exist(facility);
+        facilities.should.be.empty();
         done();
       } else done(err);
     });
