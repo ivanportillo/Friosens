@@ -18,6 +18,7 @@ Feature: Create unit
     | unit1 | LOCATION | R410A       | MARK |
     Then I should receive a response with the unit and status code 200
     And facility with ID 20 should have a unit with name "unit1"
+    And unit with name "unit1" should have a valid token
 
   Scenario: Create a unit without refrigerant
     When I create to facility ID 20 the following unit:
