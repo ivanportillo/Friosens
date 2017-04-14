@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Remove organization
   As administrator
   I want to be able to remove a organization
@@ -33,7 +33,7 @@ Feature: Remove organization
 
   Scenario: Remove a organization with facilities and users
     Given there is the following user:
-    | id | first_name | last_name | enabled | admin | email           | password | salt | organization_id |
+    | id | first_name | last _name | enabled | admin | email           | password | salt | organization_id |
     | 20 | Iván       | Portillo  | 1       | 0     | i32polei@uco.es | pass     | salt |              20 |
     | 21 | Usuario    | Apellidos | 1       | 0     | mail@uco.es     | pass     | salt |              20 |
     And the following facilities:
