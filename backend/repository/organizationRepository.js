@@ -10,5 +10,20 @@ module.exports = OrganizationEntity => {
     OrganizationEntity.one(query, cb);
   };
 
-  return { create, findOneByName };
+  const findById = (organizationId, cb) => {
+    const query = { id: organizationId };
+    OrganizationEntity.find(query, cb);
+  };
+
+  const removeById = (organizationId, cb) => {
+    const query = { id: organizationId };
+    OrganizationEntity.one(query, (err, organization) => {
+      if (err) cb(err);
+      else {
+        organization.remove(cb);
+      }
+    });
+  };
+
+  return { create, findOneByName, findById, removeById };
 };

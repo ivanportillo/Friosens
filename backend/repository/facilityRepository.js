@@ -1,5 +1,7 @@
 'use strict';
 
+const async = require('async');
+
 module.exports = FacilityEntity => {
   const create = (facility, organizationId, cb) => {
     facility.organization_id = organizationId;
@@ -35,5 +37,24 @@ module.exports = FacilityEntity => {
     });
   };
 
-  return { create, findByOrganizationId, removeById, findById, findOneById };
+  const removeByOrganizationId = (organizationId, cb) => {
+    const query = { organization_id: organizationId };
+    FacilityEntity.find(query, (err, facilities) => {
+      if (err) cb(err);
+      else {
+        async.each(facilities, (facility, done) => {
+          facility.remove(done);
+        }, cb);
+      }
+    });
+  };
+
+  return {
+    create,
+    findByOrganizationId,
+    removeById,
+    findById,
+    findOneById,
+    removeByOrganizationId
+  };
 };
