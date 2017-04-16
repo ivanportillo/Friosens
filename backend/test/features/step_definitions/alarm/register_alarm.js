@@ -33,7 +33,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^unit ID (\d+) should have (\d+) alarms$/, (unitId, nAlarms, done) => {
-    alarmRepository.findByUnitId(unitId, (err, alarms) => {
+    alarmRepository.findByUnitId(unitId, 200, (err, alarms) => {
       alarms.length.should.be.eql(nAlarms);
       async.each(alarms, (alarm, next) => {
         alarm.should.have.keys('title', 'description', 'active');
@@ -43,7 +43,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^unit ID (\d+) shouldn't have any alarm$/, (unitId, done) => {
-    alarmRepository.findByUnitId(unitId, (err, alarms) => {
+    alarmRepository.findByUnitId(unitId, 200, (err, alarms) => {
       alarms.length.should.be.eql(0);
       done();
     });
