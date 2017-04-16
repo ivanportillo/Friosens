@@ -10,6 +10,7 @@ const app = express();
 const Router = express.Router;
 
 const loadRules = require('./rules');
+const loadEvents = require('./events');
 
 app.use(cors());
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(routes(new Router()));
 
 loadRules();
+loadEvents();
 
 app.listen(config.app.express.port, () => {
   if (process.env.NODE_ENV !== 'test') console.log(`API listening at port ${config.app.express.port}`);
