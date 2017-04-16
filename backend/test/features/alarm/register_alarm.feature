@@ -26,3 +26,9 @@ Feature: Register alarm
     | discharge_pressure | suction_pressure | in_temp_condenser | out_temp_condenser | in_temp_evaporator | out_temp_evaporator | current_1 | current_2 | current_3 |
     |                 7  |                4 |                 2 |                  5 |                 10 |                   9 |         5 |         5 |         5 |
     Then unit ID 20 shouldn't have any alarm
+
+  Scenario: Register reading with values out of range
+    When I register the following reading to the unit ID 20 :
+    | discharge_pressure | suction_pressure | in_temp_condenser | out_temp_condenser | in_temp_evaporator | out_temp_evaporator | current_1 | current_2 | current_3 |
+    |                 31 |               31 |               101 |                101 |                101 |                 101 |        -1 |        -1 |        -1 |
+    Then unit ID 20 should have 9 alarms
