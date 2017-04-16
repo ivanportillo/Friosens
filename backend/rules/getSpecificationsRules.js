@@ -21,8 +21,8 @@ module.exports = (specificationsPath, callback) => {
   const _generateRules = (specifications, cb) => {
     const rules = [];
     async.each(specificationPrototype.parameters, (parameter, next) => {
-      const lowerRule = { conditions: { any: [] }, event: { type: `low_${parameter}` }};
-      const upperRule = { conditions: { any: [] }, event: { type: `high_${parameter}` }};
+      const lowerRule = { conditions: { any: [] }, event: { type: `low_${parameter}` }, priority: 2 };
+      const upperRule = { conditions: { any: [] }, event: { type: `high_${parameter}` }, priority: 2 };
       let lowerConditions = [];
       let upperConditions = [];
       async.each(specifications, (specification, next) => {
@@ -35,6 +35,10 @@ module.exports = (specificationsPath, callback) => {
             fact: parameter,
             operator: 'lessThan',
             value: specification.parameters[parameter].lowerLimit
+          }, {
+            fact: parameter,
+            operator: 'greaterThan',
+            value: specificationPrototype.out_of_range[parameter].lower
           }]
         };
         lowerConditions.push(condition);
@@ -50,6 +54,10 @@ module.exports = (specificationsPath, callback) => {
               fact: parameter,
               operator: 'greaterThan',
               value: specification.parameters[parameter].upperLimit
+            }, {
+              fact: parameter,
+              operator: 'lessThan',
+              value: specificationPrototype.out_of_range[parameter].upper
             }]
           };
           upperConditions.push(condition);
