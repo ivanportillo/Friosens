@@ -1,0 +1,17 @@
+{
+  "conditions": {
+    "any": [{
+      "fact": "suction_pressure",
+      "operator": "lessThan",
+      "value": -30
+    },{
+      "fact": "suction_pressure",
+      "operator": "greaterThan",
+      "value": 30
+    }]
+  },
+  "event": {
+    "type": "suction_pressure_out_of_range"
+  },
+  "priority": 1
+}

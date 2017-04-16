@@ -1,0 +1,17 @@
+{
+  "conditions": {
+    "any": [{
+      "fact": "discharge_pressure",
+      "operator": "lessThan",
+      "value": -30
+    },{
+      "fact": "discharge_pressure",
+      "operator": "greaterThan",
+      "value": 30
+    }]
+  },
+  "event": {
+    "type": "discharge_pressure_out_of_range"
+  },
+  "priority": 1
+}

@@ -1,0 +1,17 @@
+{
+  "conditions": {
+    "any": [{
+      "fact": "out_temp_condenser",
+      "operator": "lessThan",
+      "value": -30
+    },{
+      "fact": "out_temp_condenser",
+      "operator": "greaterThan",
+      "value": 100
+    }]
+  },
+  "event": {
+    "type": "out_temp_condenser_out_of_range"
+  },
+  "priority": 1
+}

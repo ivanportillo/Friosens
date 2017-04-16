@@ -1,0 +1,17 @@
+{
+  "conditions": {
+    "any": [{
+      "fact": "in_temp_evaporator",
+      "operator": "lessThan",
+      "value": -30
+    },{
+      "fact": "in_temp_evaporator",
+      "operator": "greaterThan",
+      "value": 100
+    }]
+  },
+  "event": {
+    "type": "in_temp_evaporator_out_of_range"
+  },
+  "priority": 1
+}

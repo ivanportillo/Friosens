@@ -1,0 +1,17 @@
+{
+  "conditions": {
+    "any": [{
+      "fact": "current_1",
+      "operator": "lessThan",
+      "value": 0
+    },{
+      "fact": "current_1",
+      "operator": "greaterThan",
+      "value": 100
+    }]
+  },
+  "event": {
+    "type": "current_1_out_of_range"
+  },
+  "priority": 1
+}
