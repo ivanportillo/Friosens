@@ -1,0 +1,29 @@
+{
+  "refrigerant": "R407C",
+  "parameters": {
+    "discharge_pressure": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    },
+    "suction_pressure": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    },
+    "in_temp_condenser": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    },
+    "out_temp_condenser": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    },
+    "in_temp_evaporator": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    },
+    "out_temp_evaporator": {
+      "lowerLimit": 0,
+      "upperLimit": 10
+    }
+  }
+}
