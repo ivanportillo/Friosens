@@ -1,0 +1,14 @@
+{
+  "low_discharge_pressure": "Description for low_discharge_pressure",
+  "high_discharge_pressure": "Description for low_discharge_pressure",
+  "low_suction_pressure": "Description for low_suction_pressure",
+  "high_suction_pressure": "Description for high_suction_pressure",
+  "low_in_temp_condenser": "Description for low_in_temp_condenser",
+  "high_in_temp_condenser": "Description for high_in_temp_condenser",
+  "low_out_temp_condenser": "Description for low_out_temp_condenser",
+  "high_out_temp_condenser": "Description for high_out_temp_condenser",
+  "low_in_temp_evaporator": "Description for low_in_temp_evaporator",
+  "high_in_temp_evaporator": "Description for high_in_temp_evaporator",
+  "low_out_temp_evaporator": "Description for low_out_temp_evaporator",
+  "high_out_temp_evaporator": "Description for high_out_temp_evaporator"
+}
