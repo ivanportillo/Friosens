@@ -10,5 +10,14 @@
   "low_in_temp_evaporator": "Description for low_in_temp_evaporator",
   "high_in_temp_evaporator": "Description for high_in_temp_evaporator",
   "low_out_temp_evaporator": "Description for low_out_temp_evaporator",
-  "high_out_temp_evaporator": "Description for high_out_temp_evaporator"
+  "high_out_temp_evaporator": "Description for high_out_temp_evaporator",
+  "current_1_out_of_range": "Current 1 value out of range",
+  "current_2_out_of_range": "Current 2 value out of range",
+  "current_3_out_of_range": "Current 3 value out of range",
+  "discharge_pressure_out_of_range": "Discharge pressure value out of range",
+  "suction_pressure_out_of_range": "Suction pressure value out of range",
+  "in_temp_condenser_out_of_range": "In temp condenser value out of range",
+  "out_temp_condenser_out_of_range": "Out temp condenser value out of range",
+  "in_temp_evaporator_out_of_range": "In temp evaporator value out of range",
+  "out_temp_evaporator_out_of_range": "Out temp evaporator value out of range"
 }
