@@ -1,24 +1,28 @@
-@sprint1
+@sprint1 @working
 Feature: Register alarm
   As system
   I want to be able to register an alarm when a malfunction is detected
 
   Background:
-    Given there is the following facility:
-    | id | name           | location          | user_id |
-    |  1 | Sala principal | Cubierta exterior |       1 |
-    And there is the following unit:
+    Given the following organization:
+    | id | name           | type    |
+    | 20 | MyOrganization | company |
+    And the following facility:
+    | id | name           | location          | organization_id |
+    | 20 | Sala principal | Cubierta exterior |              20 |
+    And the following unit:
     | id | name  | location | refrigerant | mark | facility_id |
-    |  1 | unit1 | LOCATION | R410A       | MARK |           1 |
+    | 20 | unit1 | LOCATION | R410A       | MARK |          20 |
+    And [register-alarm] I'm logged as measuring device of unit ID 20
 
-  Scenario: Register reading with values out of range
-    When I register to the unit ID 1 the following reading:
+  Scenario: Register reading with anormal values
+    When I register the following reading to the unit ID 20 :
     | discharge_pressure | suction_pressure | in_temp_condenser | out_temp_condenser | in_temp_evaporator | out_temp_evaporator | current_1 | current_2 | current_3 |
-    |                 0  |               -3 |                -8 |                 -3 |                 -2 |                   0 |        20 |        20 |        20 |
-    Then unit ID 1 should have 9 alarms
+    |                 -1  |              11 |                -1 |                 11 |                 -1 |                  11 |         2 |        2  |        2  |
+    Then unit ID 20 should have 6 alarms
 
   Scenario: Register reading with normal values
-    When I register to the unit ID 1 the following reading:
+    When I register the following reading to the unit ID 20 :
     | discharge_pressure | suction_pressure | in_temp_condenser | out_temp_condenser | in_temp_evaporator | out_temp_evaporator | current_1 | current_2 | current_3 |
-    |                 7  |                4 |                30 |                 12 |                 10 |                  15 |        12 |        12 |        12 |
-    Then unit ID 1 shouldn't have any alarm
+    |                 7  |                4 |                 2 |                  5 |                 10 |                   9 |         5 |         5 |         5 |
+    Then unit ID 20 shouldn't have any alarm

@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Register a reading
   As measuring device
   I want to be able to register readings to track a unit
