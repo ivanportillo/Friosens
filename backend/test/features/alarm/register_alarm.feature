@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Register alarm
   As system
   I want to be able to register an alarm when a malfunction is detected
