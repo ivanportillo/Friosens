@@ -19,5 +19,12 @@
       "host": "",
       "port": "3000"
     }
+  },
+  "rules": {
+    "errorRange": {
+      "pressure": 2,
+      "temp": 2,
+      "current": 2
+    }
   }
 }
