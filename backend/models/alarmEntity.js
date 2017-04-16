@@ -8,7 +8,7 @@ module.exports = (orm, db) => {
     active: { type: 'boolean' }
   },{
     hooks: {
-      beforeValidation: () => {
+      beforeValidation: function () {
         this.created_at = new Date();
       }
     }
