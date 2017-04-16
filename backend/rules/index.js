@@ -23,12 +23,12 @@ module.exports = () => {
         async.each(result, (rule, next) => {
           ruleEngine.addRule(rule);
           next();
-        });
+        }, cb);
       } else cb();
     });
   };
   return async.waterfall([
     next => _loadSpecificationRules(next),
     next => _loadAdditionalRules(next),
-  ]);
+  ], () => { if(process.env.NODE_ENV !== 'test') console.log("Rules loaded"); });
 };
