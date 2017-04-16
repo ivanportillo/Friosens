@@ -20,7 +20,9 @@ exports.FACILITIES_PATH = prefix('/facilities');
 exports.FACILITY_PATH = prefix('/facilities/:id');
 exports.FACILITY_UNITS_PATH = prefix('/facilities/:id/units');
 exports.FACILITY_UNIT_PATH = prefix('/facilities/:id/units/:unit');
-exports.FACILITY_UNIT_ALARMS_PATH = prefix('/facilities/:id/units/:unit/alarms');
+
+//UNITS
+exports.UNIT_ALARMS_PATH = prefix('/units/:unit/alarms');
 
 // READING
 exports.REGISTER_READING_PATH = prefix('/reading');

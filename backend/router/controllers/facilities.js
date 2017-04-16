@@ -10,6 +10,9 @@ const showUnits = unitsActions.showUnits;
 const createUnit = unitsActions.createUnit;
 const removeUnit = unitsActions.removeUnit;
 
+const alarmsActions = require('../../action/alarm');
+const showHistoricalAlarms = alarmsActions.showHistoricalAlarms;
+
 const responseBuilder = require('../../utils/responseBuilder');
 
 module.exports = {
@@ -40,5 +43,8 @@ module.exports = {
   },
   removeUnit: (req, res) => {
     removeUnit(req.params.id, req.params.unit, responseBuilder.createResponse(req, res));
+  },
+  showAlarms: (req, res) => {
+    showHistoricalAlarms(req.params.unit, req.query.limit, responseBuilder.createResponse(req, res));
   }
 };

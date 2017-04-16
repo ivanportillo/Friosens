@@ -22,6 +22,7 @@ module.exports = router => {
   router.get(PATHS.FACILITY_UNITS_PATH, allowAccessUser, facilitiesController.getUnits);
   router.post(PATHS.FACILITY_UNITS_PATH, allowAccessAdmin, facilitiesController.createUnit);
   router.delete(PATHS.FACILITY_UNIT_PATH, allowAccessAdmin, facilitiesController.removeUnit);
+  router.get(PATHS.UNIT_ALARMS_PATH, allowAccessUser, facilitiesController.showAlarms);
 
   // AUTH
   router.post(PATHS.LOGIN_PATH, usersController.login);
