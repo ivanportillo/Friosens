@@ -1,9 +1,13 @@
 'use strict';
 
-const readingRepository = require('../../repository').Reading;
+const repositories = require('../../repository');
+const readingRepository = repositories.Reading;
+const unitRepository = repositories.Unit;
+
+const ruleEngine = require('../../utils/ruleEngine')();
 
 const createRegisterReading = require('./registerReading');
 
 module.exports = {
-  registerReading: createRegisterReading(readingRepository)
+  registerReading: createRegisterReading(readingRepository, unitRepository, ruleEngine)
 };
