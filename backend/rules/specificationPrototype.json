@@ -1,0 +1,10 @@
+{
+  "parameters": [
+    "discharge_pressure",
+    "suction_pressure",
+    "in_temp_condenser",
+    "out_temp_condenser",
+    "in_temp_evaporator",
+    "out_temp_evaporator"
+  ]
+}
