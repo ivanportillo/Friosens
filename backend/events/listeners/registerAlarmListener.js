@@ -1,5 +1,6 @@
 const alarmEvent = require('../alarmEvent');
 const alarmRepository = require('../../repository').Alarm;
+const getDescription = require('../../rules/descriptions/getDescription');
 
 class registerAlarmListener extends alarmEvent{
   constructor(){
@@ -12,7 +13,7 @@ class registerAlarmListener extends alarmEvent{
       title: type,
       unit_id: unitId,
       active: true,
-      description: type,
+      description: getDescription(type),
       reading_id: readingId
     };
     alarmRepository.create(alarm, err => { if(err) console.log(err); });
