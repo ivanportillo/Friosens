@@ -4,7 +4,7 @@ module.exports = (orm, db) => {
   const Alarm = db.define('alarm', {
     created_at: { type: 'date', required: true, time: true },
     title: { type: 'text', required: true },
-    description: { type: 'text', required: true },
+    description: { type: 'text' },
     active: { type: 'boolean' }
   },{
     hooks: {
