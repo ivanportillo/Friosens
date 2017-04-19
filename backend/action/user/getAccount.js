@@ -5,7 +5,6 @@ const NotFoundError = require('spur-errors').NotFoundError;
 module.exports = (userRepository) => {
   const _getAccount = (userId, cb) => {
     userRepository.findOneById(userId, (err, user) => {
-      console.log(user);
       if (err) cb(err);
       else if(!user) cb(NotFoundError.create("User not found"));
       else cb(null, {
