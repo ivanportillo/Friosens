@@ -26,11 +26,9 @@ defineSupportCode(({ Given, When, Then }) => {
       password: 'password'
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -44,26 +42,23 @@ defineSupportCode(({ Given, When, Then }) => {
 
   Then(/^facility with ID (\d+) shouldn't exist$/, (facilityId, done) => {
     facilityRepository.findById(facilityId, (err, facilities) => {
-      if (!err) {
-        facilities.should.be.empty();
-        done();
-      } else done(err);
+      should.not.exist(err);
+      should(facilities).be.empty();
+      done();
     });
   });
 
   Then(/^shouldn't exist any unit with facility ID (\d+)$/, function (facilityId, done) {
     unitRepository.findByFacilityId(facilityId, (err, units) => {
-      if (err) done(err);
-      else {
-        units.should.be.empty();
-        done();
-      }
+      should.not.exist(err);
+      should(units).be.empty();
+      done();
     });
   });
 
   Then(/^I should receive a Not Found error with code (\d+) and message "([^"]*)"$/, function (errorCode, message, done) {
-    responseRemove.statusCode.should.be.eql(errorCode);
-    responseRemove.response.error.should.be.eql(message);
+    should(responseRemove.statusCode).be.eql(errorCode);
+    should(responseRemove.response.error).be.eql(message);
     done();
   });
 

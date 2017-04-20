@@ -16,7 +16,7 @@ defineSupportCode(({ Given, When, Then }) => {
   Given(/^\[register\-reading\] I'm logged as measuring device of unit ID (\d+)$/, (unitId, done) => {
     unitRepository.findOneById(unitId, (err, unit) => {
       should.not.exist(err);
-      unit.should.not.be.empty();
+      should(unit).not.be.empty();
       token = unit.token;
       done();
     });
@@ -37,16 +37,16 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive response with message "([^"]*)" and status code (\d+)$/, (message, statusCode, done) => {
-    registerResponse.response.message.should.be.eql(message);
-    registerResponse.statusCode.should.be.eql(statusCode);
+    should(registerResponse.response.message).be.eql(message);
+    should(registerResponse.statusCode).be.eql(statusCode);
     done();
   });
 
   Then(/^unit ID (\d+) should have a reading$/, (unitId, done) => {
     readingRepository.findByUnitId(unitId, (err, readings) => {
       should.not.exist(err);
-      readings.should.not.be.empty();
-      readings[0].should.have.keys(
+      should(readings).not.be.empty();
+      should(readings[0]).have.keys(
         'created_at',
         'discharge_pressure',
         'suction_pressure',
@@ -62,8 +62,8 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive response with error "([^"]*)" and status code (\d+)$/, (error, statusCode, done) => {
-    registerResponse.response.error.should.be.eql(error);
-    registerResponse.statusCode.should.be.eql(statusCode);
+    should(registerResponse.response.error).be.eql(error);
+    should(registerResponse.statusCode).be.eql(statusCode);
     done();
   });
 });

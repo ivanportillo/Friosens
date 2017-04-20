@@ -23,11 +23,9 @@ defineSupportCode(({ Given, When, Then }) => {
       organization_id: organizationId
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -41,8 +39,8 @@ defineSupportCode(({ Given, When, Then }) => {
 
   Then(/^I should receive (\d+) facilities and (\d+) as status code$/, (nFacilities, statusCode, done) => {
     const facilities = showResponse.response.data;
-    facilities.length.should.be.eql(nFacilities);
-    showResponse.statusCode.should.be.eql(statusCode);
+    should(facilities).have.length(nFacilities);
+    should(showResponse.statusCode).be.eql(statusCode);
     done();
   });
 });

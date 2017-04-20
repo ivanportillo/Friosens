@@ -23,11 +23,9 @@ defineSupportCode(({ Given, When, Then }) => {
       password: 'password'
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -41,25 +39,23 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive a response with status code (\d+) and "([^"]*)" as message$/, (statusCode, message, done) => {
-    createResponse.statusCode.should.be.eql(statusCode);
-    createResponse.response.message.should.be.eql(message);
+    should(createResponse.statusCode).be.eql(statusCode);
+    should(createResponse.response.message).be.eql(message);
     done();
   });
   
   Then(/^should exist a organization with name "([^"]*)"$/, (orgName, done) => {
     organizationRepository.findOneByName(orgName, (err, organization) => {
-      if (err) done(err);
-      else {
-        organization.name.should.be.eql(orgName);
-        organization.type.should.not.be.empty();
-        done();
-      }
+      should.not.exist(err);
+      should(organization.name).be.eql(orgName);
+      should(organization.type).not.be.empty();
+      done();
     });
   });
 
   Then(/^I should receive a error with status code (\d+) and "([^"]*)" as message$/, (statusCode, message, done) => {
-    createResponse.statusCode.should.be.eql(statusCode);
-    createResponse.response.error.should.be.eql(message);
+    should(createResponse.statusCode).be.eql(statusCode);
+    should(createResponse.response.error).be.eql(message);
     done();
   });
 });

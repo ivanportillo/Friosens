@@ -15,22 +15,17 @@ defineSupportCode(({ When, Then }) => {
       };
 
       request.post(PATHS.LOGIN_PATH, payload, null, (error, response, statusCode) => {
-         responsePl = {
-           error,
-           response,
-           statusCode
-         };
+         should.not.exist(error);
+         responsePl = { response, statusCode };
          done();
       });
   });
 
   Then(/^I should receive a token and "([^"]*)" as message$/, function (stringInDoubleQuotes, done) {
     const message = stringInDoubleQuotes;
-    should.not.exist(responsePl.error);
-    responsePl.statusCode.should.be.eql(200);
-    responsePl.response.data.should.not.be.empty();
-    responsePl.response.message.should.be.eql(message);
-    done();
+    should(responsePl.statusCode).be.eql(200);
+    should(responsePl.response.data).not.be.empty();
+    should(responsePl.response.message).be.eql(message);
     done();
   });
 
@@ -38,8 +33,8 @@ defineSupportCode(({ When, Then }) => {
       const errorCode = int;
       const error = stringInDoubleQuotes;
       should.exist(responsePl.response.error);
-      responsePl.response.error.should.be.eql(error);
-      responsePl.statusCode.should.be.eql(errorCode);
+      should(responsePl.response.error).be.eql(error);
+      should(responsePl.statusCode).be.eql(errorCode);
       done();
   });
 });

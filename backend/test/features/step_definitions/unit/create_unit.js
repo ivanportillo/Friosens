@@ -24,11 +24,9 @@ defineSupportCode(({ Given, When, Then }) => {
       password: 'password'
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -42,38 +40,34 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive a response with the unit and status code (\d+)$/, (statusCode, done) => {
-    createResponse.response.data.should.not.be.empty();
-    createResponse.statusCode.should.be.eql(statusCode);
+    should(createResponse.response.data).not.be.empty();
+    should(createResponse.statusCode).be.eql(statusCode);
     done();
   });
 
   Then(/^facility with ID (\d+) should have a unit with name "([^"]*)"$/, (facilityId, unitName, done) => {
     unitRepository.findByFacilityId(facilityId, (err, units) => {
-      if (err) done(err);
-      else {
-        units.length.should.be.eql(1);
-        units[0].name.should.be.eql(unitName);
-        done();
-      }
+      should.not.exist(err);
+      should(units).have.length(1);
+      should(units[0].name).be.eql(unitName);
+      done();
     });
   });
 
   Then(/^unit with name "([^"]*)" should have a valid token$/, (unitName, done) => {
     unitRepository.findByName(unitName, (err, unit) => {
-      if (err) cb(err);
-      else unitServices.tokenManager.verify(unit.token, (err, payload) => {
-        if (err) cb(err);
-        else {
-          payload.should.have.key('id');
-          done();
-        }
+      should.not.exist(err);
+      unitServices.tokenManager.verify(unit.token, (err, payload) => {
+        should.not.exist(err);
+        should(payload).have.key('id');
+        done();
       });
     });
   });
 
   Then(/^I should receive a validation error with code (\d+) and message "([^"]*)"$/, (statusCode, message, done) => {
-    createResponse.statusCode.should.be.eql(statusCode);
-    createResponse.response.error.should.be.eql(message);
+    should(createResponse.statusCode).be.eql(statusCode);
+    should(createResponse.response.error).be.eql(message);
     done();
   });
 });

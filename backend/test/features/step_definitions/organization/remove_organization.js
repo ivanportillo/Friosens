@@ -26,11 +26,9 @@ defineSupportCode(({ Given, When, Then }) => {
       password: 'password'
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -44,15 +42,15 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive a message "([^"]*)" and (\d+) as status code$/, (message, statusCode, done) => {
-    removeResponse.response.message.should.be.eql(message);
-    removeResponse.statusCode.should.be.eql(statusCode);
+    should(removeResponse.response.message).be.eql(message);
+    should(removeResponse.statusCode).be.eql(statusCode);
     done();
   });
 
   Then(/^Organization ID (\d+) should not exist$/, (organizationId, done) => {
     organizationRepository.findById(organizationId, (err, organizations) => {
       should.not.exist(err);
-      organizations.should.be.empty();
+      should(organizations).be.empty();
       done();
     });
   });
@@ -60,10 +58,10 @@ defineSupportCode(({ Given, When, Then }) => {
   Then(/^Organization ID (\d+) should not exist and neither user ID (\d+)$/, (organizationId, userId, done) => {
     organizationRepository.findById(organizationId, (err, organizations) => {
       should.not.exist(err);
-      organizations.should.be.empty();
+      should(organizations).be.empty();
       userRepository.findById(userId, (err, users) => {
         should.not.exist(err);
-        users.should.be.empty();
+        should(users).be.empty();
         done();
       });
     });
@@ -72,10 +70,10 @@ defineSupportCode(({ Given, When, Then }) => {
   Then(/^Organization ID (\d+) should not exist and neither facility ID (\d+)$/, (organizationId, facilityId, done) => {
     organizationRepository.findById(organizationId, (err, organizations) => {
       should.not.exist(err);
-      organizations.should.be.empty();
+      should(organizations).be.empty();
       facilityRespository.findById(facilityId, (err, facilities) => {
         should.not.exist(err);
-        facilities.should.be.empty();
+        should(facilities).be.empty();
         done();
       });
     });
@@ -85,19 +83,19 @@ defineSupportCode(({ Given, When, Then }) => {
     (orgId, facId1, facId2, userId1, userId2, done) => {
       organizationRepository.findById(orgId, (err, organizations) => {
         should.not.exist(err);
-        organizations.should.be.empty();
+        should(organizations).be.empty();
         facilityRespository.findById(facId1, (err, facilities) => {
           should.not.exist(err);
-          facilities.should.be.empty();
+          should(facilities).be.empty();
           facilityRespository.findById(facId2, (err, facilities) => {
             should.not.exist(err);
-            facilities.should.be.empty();
+            should(facilities).be.empty();
             userRepository.findById(userId1, (err, users) => {
               should.not.exist(err);
-              users.should.be.empty();
+              should(users).be.empty();
               userRepository.findById(userId2, (err, users) => {
                 should.not.exist(err);
-                users.should.be.empty();
+                should(users).be.empty();
                 done();
               });
             });
@@ -107,8 +105,8 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive a error "([^"]*)" and (\d+) as status code$/, (error, statusCode, done) => {
-    removeResponse.response.error.should.be.eql(error);
-    removeResponse.statusCode.should.be.eql(statusCode);
+    should(removeResponse.response.error).be.eql(error);
+    should(removeResponse.statusCode).be.eql(statusCode);
     done();
   });
 });

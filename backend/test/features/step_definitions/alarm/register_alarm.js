@@ -16,7 +16,7 @@ defineSupportCode(({ Given, When, Then }) => {
   Given(/^\[register\-alarm\] I'm logged as measuring device of unit ID (\d+)$/, (unitId, done) => {
     unitRepository.findOneById(unitId, (err, unit) => {
       should.not.exist(err);
-      unit.should.not.be.empty();
+      should(unit).not.be.empty();
       token = unit.token;
       done();
     });
@@ -27,16 +27,16 @@ defineSupportCode(({ Given, When, Then }) => {
       should.not.exist(error);
       should.not.exist(response.error);
       should.exist(response.message);
-      statusCode.should.be.eql(200);
+      should(statusCode).be.eql(200);
       done();
     });
   });
 
   Then(/^unit ID (\d+) should have (\d+) alarms$/, (unitId, nAlarms, done) => {
     alarmRepository.findByUnitId(unitId, 200, (err, alarms) => {
-      alarms.length.should.be.eql(nAlarms);
+      should(alarms).have.length(nAlarms);
       async.each(alarms, (alarm, next) => {
-        alarm.should.have.keys('title', 'description', 'active');
+        should(alarm).have.keys('title', 'description', 'active');
         next();
       }, done);
     });
@@ -44,7 +44,7 @@ defineSupportCode(({ Given, When, Then }) => {
 
   Then(/^unit ID (\d+) shouldn't have any alarm$/, (unitId, done) => {
     alarmRepository.findByUnitId(unitId, 200, (err, alarms) => {
-      alarms.length.should.be.eql(0);
+      should(alarms).have.length(0);
       done();
     });
   });

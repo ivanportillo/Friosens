@@ -21,17 +21,16 @@ defineSupportCode(({ Given, When, Then }) => {
             password: 'password'
         };
         tokenUt.createLogged(user, (err, tokenResult) => {
-           if(err) done(err);
-           else {
-               token = tokenResult;
-               done();
-           }
+          should.not.exist(err);
+          token = tokenResult;
+          done();
         });
     });
 
     When(/^I create a new user with the following data:$/, function (table, done) {
         const user = table.hashes()[0];
         request.post(PATHS.REGISTER_PATH, user, token, (error, response, statusCode) => {
+            should.not.exist(error);
             responseCreate = { error, response, statusCode };
             done();
         });

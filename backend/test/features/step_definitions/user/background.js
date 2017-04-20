@@ -2,6 +2,7 @@
 
 const { defineSupportCode } = require('cucumber');
 const async = require('async');
+const should = require('should');
 
 const repositories = require('../../../../repository');
 const userRepository = repositories.User;
@@ -13,16 +14,14 @@ defineSupportCode(({ Given }) => {
         const users = table.hashes();
         async.each(users, (user, done) => {
             encrypt.encrypt(user.password, (err, hash, salt) => {
-                if(err) done(err);
-                else {
-                    user.salt = salt;
-                    user.password = hash;
-                    user.enabled = (user.enabled === 'true');
-                    userRepository.create(user, err => {
-                        if (err) done(err);
-                        else done();
-                    });
-                }
+              should.not.exist(err);
+              user.salt = salt;
+              user.password = hash;
+              user.enabled = (user.enabled === 'true');
+              userRepository.create(user, err => {
+                should.not.exist(err);
+                done();
+              });
             });
         }, callback);
     });
@@ -30,11 +29,9 @@ defineSupportCode(({ Given }) => {
     Given(/^the following organization:$/, (table, done) => {
       const organization = table.hashes()[0];
       organizationRepository.create(organization, (err, organizationCreated) => {
-        if (err) done(err);
-        else {
-          organization.should.be.eql(organizationCreated);
-          done();
-        }
+        should.not.exist(err);
+        organization.should.be.eql(organizationCreated);
+        done();
       });
     });
 });

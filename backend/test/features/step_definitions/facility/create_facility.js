@@ -24,11 +24,9 @@ defineSupportCode(({ Given, When, Then }) => {
           password: 'password'
       };
       tokenUt.createLogged(user, (err, tokenResult) => {
-          if(err) done(err);
-          else {
-              token = tokenResult;
-              done();
-          }
+          should.not.exist(err);
+          token = tokenResult;
+          done();
       });
   });
   When(/^I create to the organization with ID (\d+) the following facility:$/, (int, table, done) => {
@@ -48,20 +46,18 @@ defineSupportCode(({ Given, When, Then }) => {
     const organizationId = int;
     const facilityName = stringInDoubleQuotes;
       facilityRepository.findByOrganizationId(organizationId, (err, facility) => {
-          if(err) done(err);
-          else {
-              facility.organization_id.should.be.eql(organizationId);
-              facility.name.should.be.eql(facilityName);
-              done();
-          }
+          should.not.exist(err);
+          should(facility.organization_id).be.eql(organizationId);
+          should(facility.name).be.eql(facilityName);
+          done();
       });
   });
 
   Then(/^the response is a validation error with code (\d+) and message "([^"]*)"$/, (int, stringInDoubleQuotes, done) => {
     const errorCode = int;
     const error = stringInDoubleQuotes;
-    responseCreate.statusCode.should.be.eql(errorCode);
-    responseCreate.response.error.should.be.eql(error);
+    should(responseCreate.statusCode).be.eql(errorCode);
+    should(responseCreate.response.error).be.eql(error);
     done();
   });
 });
