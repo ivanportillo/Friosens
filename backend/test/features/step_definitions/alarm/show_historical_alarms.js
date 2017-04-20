@@ -24,11 +24,9 @@ defineSupportCode(({ Given, When, Then }) => {
       organization_id: organizationId
     };
     tokenUt.createLogged(user, (err, tokenResult) => {
-      if(err) done(err);
-      else {
-        token = tokenResult;
-        done();
-      }
+      should.not.exist(err);
+      token = tokenResult;
+      done();
     });
   });
 
@@ -44,10 +42,10 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   Then(/^I should receive (\d+) alarms and (\d+) as status code$/, (nAlarms, statusCode, done) => {
-    showResponse.response.data.length.should.be.eql(nAlarms);
-    showResponse.statusCode.should.be.eql(statusCode);
+    should(showResponse.response.data).have.length(nAlarms);
+    should(showResponse.statusCode).be.eql(statusCode);
     async.each(showResponse.response.data, (alarm, next) => {
-      alarm.should.have.keys(
+      should(alarm).have.keys(
         'created_at',
         'title',
         'description',
