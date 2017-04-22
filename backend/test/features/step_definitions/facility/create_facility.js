@@ -47,8 +47,9 @@ defineSupportCode(({ Given, When, Then }) => {
     const facilityName = stringInDoubleQuotes;
       facilityRepository.findByOrganizationId(organizationId, (err, facility) => {
           should.not.exist(err);
-          should(facility.organization_id).be.eql(organizationId);
-          should(facility.name).be.eql(facilityName);
+          should(facility).have.length(1);
+          should(facility[0].organization_id).be.eql(organizationId);
+          should(facility[0].name).be.eql(facilityName);
           done();
       });
   });

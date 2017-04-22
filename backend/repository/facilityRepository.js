@@ -22,7 +22,6 @@ module.exports = FacilityEntity => {
     const query = { organization_id: organizationId };
     FacilityEntity.find(query, (err, facilities) => {
       if(err) cb(err);
-      else if(facilities.length === 1) cb(null, facilities[0]);
       else cb(null, facilities);
     });
   };
