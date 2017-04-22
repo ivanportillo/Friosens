@@ -7,7 +7,7 @@ const getAdditionalRules = require('./getAdditionalRules');
 const SPECIFICATIONS_PATH = 'rules/refrigerantSpecifications';
 const ADDITIONAL_RULES_PATH = 'rules/additionalRules';
 
-module.exports = () => {
+module.exports = callback => {
   const _loadSpecificationRules = (cb) => {
     getSpecificationRules(SPECIFICATIONS_PATH, (err, result) => {
       async.each(result, (rule, next) => {
@@ -30,5 +30,8 @@ module.exports = () => {
   return async.waterfall([
     next => _loadSpecificationRules(next),
     next => _loadAdditionalRules(next),
-  ], () => { if(process.env.NODE_ENV !== 'test') console.log("Rules loaded"); });
+  ], err => {
+    if(err) callback(err);
+    else callback();
+  });
 };
