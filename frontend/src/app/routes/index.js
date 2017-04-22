@@ -1,41 +1,25 @@
 import React from 'react';
-import { Route } from 'react-router';
 
 import Login from 'containers/Login';
-import Layout from 'components/Layout';
-import FacilityContent from 'components/FacilityContent';
+import FacilityContent from 'containers/FacilityContent';
 
-import { getToken } from 'utils/token';
+import { Switch } from 'react-router-dom';
 
-import { LOGIN_PATH, ROOT_PATH } from './paths';
 
-const createRoutes = store => {
-  const routes = (
-    <Route>
-      <Route onEnter={requiredAuthenticated} component={Layout}>
-          <Route path="/" component={FacilityContent} />
-      </Route>
-      <Route onEnter={requiredNotAuthenticated}>
-        <Route path="/login" component={Login} />
-      </Route>
-    </Route>);
+import createRoute from './routeCreators/route';
+import facilityRouteCreator from './routeCreators/facilityRoute';
 
-  function requiredAuthenticated(nextState, replace, fn) {
-    const state = store.getState();
-    if (!state.auth.user && !state.auth.isBooting){
-      replace(LOGIN_PATH);
-    }
-    fn();
-  }
+import * as PATHS from './paths';
 
-  function requiredNotAuthenticated(nextState, replace, fn) {
-    if (getToken()){
-      replace(ROOT_PATH);
-    }
-    fn();
-  }
+const createRoutes = (store) => {
+  const Route = createRoute(store);
+  const FacilityRoute = facilityRouteCreator(Route);
 
-  return routes;
+  return (
+    <Switch>
+      <FacilityRoute exact needAuth component={FacilityContent} path={PATHS.ROOT_PATH} />
+      <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH} />
+    </Switch>);
 };
 
 
