@@ -7,7 +7,7 @@ import uiReducer from './ui';
 import userReducer from './user';
 
 export default combineReducers({
-  routing: routerReducer,
+  router: routerReducer,
   form: formReducer,
   auth: authReducer,
   ui: uiReducer,

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Login from 'containers/Login';
-import FacilityContent from 'containers/FacilityContent';
+import FacilitiesContent from 'containers/FacilitiesContent';
+import UnitsContent from 'containers/UnitsContent';
 
 import { Switch } from 'react-router-dom';
 
@@ -17,8 +18,9 @@ const createRoutes = (store) => {
 
   return (
     <Switch>
-      <FacilityRoute exact needAuth component={FacilityContent} path={PATHS.ROOT_PATH} />
-      <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH} />
+      <FacilityRoute exact needAuth component={FacilitiesContent} path={PATHS.ROOT_PATH.url} />
+      <FacilityRoute needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
+      <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH.url} />
     </Switch>);
 };
 
