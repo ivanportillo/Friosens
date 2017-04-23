@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const APP_DIR = path.resolve(__dirname, 'src/app');
+const APP_DIR = path.resolve(__dirname, './src/app');
+const BUILD_DIR = path.resolve(__dirname, './dist')
 
 module.exports = {
   entry: `${APP_DIR}/app.js`,
@@ -11,9 +12,9 @@ module.exports = {
     modules: ['node_modules', APP_DIR],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: path.resolve(__dirname, 'build'),
+    path: BUILD_DIR,
+    filename: '[name].bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -46,12 +47,10 @@ module.exports = {
   },
   target: 'web',
   devServer: {
-    contentBase: path.join(__dirname, 'build'), // boolean | string | array, static file location
-    compress: true, // enable gzip compression
-    historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-    https: false, // true for self-signed, object for cert authority
-    noInfo: true, // only errors & warns on hot reload
+    contentBase: BUILD_DIR,
+    historyApiFallback: true,
   },
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({ template: `${APP_DIR}/index.html`, inject: true }),
     new webpack.NamedModulesPlugin(),
