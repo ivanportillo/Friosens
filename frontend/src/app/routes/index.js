@@ -3,6 +3,7 @@ import React from 'react';
 import Login from 'containers/Login';
 import FacilitiesContent from 'containers/FacilitiesContent';
 import UnitsContent from 'containers/UnitsContent';
+import UnitContent from 'containers/UnitContent';
 
 import { Switch } from 'react-router-dom';
 
@@ -19,7 +20,8 @@ const createRoutes = (store) => {
   return (
     <Switch>
       <FacilityRoute exact needAuth component={FacilitiesContent} path={PATHS.ROOT_PATH.url} />
-      <FacilityRoute needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
+      <FacilityRoute exact needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
+      <FacilityRoute needAuth component={UnitContent} path={PATHS.UNIT_PATH.url} />
       <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH.url} />
     </Switch>);
 };
