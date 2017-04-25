@@ -12,6 +12,7 @@ export function* watchAuth() {
   yield fork(watchLogin);
   yield fork(watchBoot);
   yield fork(watchFetchAccount);
+  yield fork(watchLogout);
 
   const token = yield call(getToken);
   if (token) yield put(authActions.bootApp());
@@ -67,6 +68,11 @@ function* fetchAccountProcess() {
   }
 }
 
+function* logoutProcess() {
+  yield call(clearToken);
+  yield put(push(LOGIN_PATH.url));
+}
+
 function* watchLogin() {
   yield takeEvery(constants.LOGIN_REQUEST, loginProcess);
 }
@@ -77,4 +83,8 @@ function* watchBoot() {
 
 function* watchFetchAccount() {
   yield takeEvery(constants.FETCH_ACCOUNT, fetchAccountProcess);
+}
+
+function* watchLogout() {
+  yield takeEvery(constants.LOGOUT, logoutProcess);
 }
