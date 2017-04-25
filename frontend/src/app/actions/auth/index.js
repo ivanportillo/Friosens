@@ -52,3 +52,9 @@ export function appBooted() {
     type: constants.APP_BOOTED,
   };
 }
+
+export function logout() {
+  return {
+    type: constants.LOGOUT,
+  };
+}

@@ -6,3 +6,4 @@ export const RECEIVE_ACCOUNT = 'RECEIVE_ACCOUNT';
 export const RECEIVE_ACCOUNT_FAILED = 'RECEIVE_ACCOUNT_FAILED';
 export const BOOT_APP = 'BOOT_APP';
 export const APP_BOOTED = 'APP_BOOTED';
+export const LOGOUT = 'LOGOUT';
