@@ -8,11 +8,11 @@ const redirection = ({ needAuth, state }) => {
   const currentUser = state.auth.user;
   const isBooting = state.auth.isBooting;
   if (needAuth && !currentUser && !isBooting) {
-    return <Redirect to={PATHS.LOGIN_PATH} />;
+    return <Redirect to={PATHS.LOGIN_PATH.url} />;
   }
 
   if (!needAuth && getToken()) {
-    return <Redirect to={PATHS.ROOT_PATH} />;
+    return <Redirect to={PATHS.ROOT_PATH.url} />;
   }
   return undefined;
 };
