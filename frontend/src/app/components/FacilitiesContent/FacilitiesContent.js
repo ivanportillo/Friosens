@@ -9,13 +9,6 @@ import styled from 'styled-components';
 
 import * as PATHS from '../../routes/paths';
 
-const Content = styled.div` 
-  padding-top: 2.5em;
-  padding-left: 4em;
-  padding-right: 4em;
-  color: #39796b;
-`;
-
 const Header = styled.div`
   font-size: 1.5em;
   font-style: normal;
@@ -75,12 +68,12 @@ class FacilitiesContent extends Component {
   render() {
     const { facilities, isLoadingFacilities } = this.props;
     return (
-      <Content>
+      <div>
         <Header>Mis instalaciones</Header>
         {isLoadingFacilities ?
           <ProgressBar type="circular" mode="indeterminate" />
           : this.renderFacilities(facilities)}
-      </Content>);
+      </div>);
   }
 }
 
