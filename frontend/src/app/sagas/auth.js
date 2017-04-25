@@ -20,7 +20,7 @@ export function* watchAuth() {
 function* loginProcess(action) {
   try {
     const response = yield call(login, action.email, action.password);
-    if(response.data) {
+    if (response.data) {
       const token = response.data.data;
       yield put(authActions.loginSuccess());
       yield call(setToken, token);
@@ -30,20 +30,20 @@ function* loginProcess(action) {
         timeout: call(delay, 5000),
       });
       if (appBooted) {
-        yield put(push(ROOT_PATH));
+        yield put(push(ROOT_PATH.url));
       } else {
-        yield put(authActions.loginFailed("Tiempo de espera excedido"));
+        yield put(authActions.loginFailed('Tiempo de espera excedido'));
       }
     }
   } catch (e) {
-    if(e.response.status === 401) yield put(authActions.loginFailed("Email y/o contraseña incorrectos"));
+    if (e.response.status === 401) yield put(authActions.loginFailed('Email y/o contraseña incorrectos'));
     else yield put(authActions.loginFailed(e.message));
   }
 }
 
 function* bootProcess() {
   yield put(authActions.fetchAccount());
-  const { fetched, error } = yield race({
+  const { fetched } = yield race({
     fetched: take(constants.RECEIVE_ACCOUNT),
     error: take(constants.RECEIVE_ACCOUNT_FAILED),
   });
@@ -52,14 +52,14 @@ function* bootProcess() {
     yield put(authActions.appBooted());
   } else {
     yield call(clearToken);
-    yield put(push(LOGIN_PATH));
+    yield put(push(LOGIN_PATH.url));
   }
 }
 
 function* fetchAccountProcess() {
   try {
     const account = yield call(fetchAccount);
-    if(account.data) {
+    if (account.data) {
       yield put(authActions.receiveAccount(account.data.data));
     }
   } catch (e) {
