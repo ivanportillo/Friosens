@@ -6,31 +6,16 @@ import { Link } from 'react-router';
 
 class DrawerMenu extends Component {
   render() {
-    const { drawer, hideDrawer, isAdmin } = this.props;
-    if(!isAdmin) {
-      return (
-        <Drawer active={ drawer } onOverlayClick={hideDrawer} type="right">
-          <List selectable>
-            <ListSubHeader caption='Menú' />
-            <ListItem caption='Instalaciones' ripple={false} />
-            <ListItem caption='Alarmas' ripple={false} />
-            <ListDivider />
-            <ListItem caption='Configuración' ripple={false} />
-            <ListItem caption='Cerrar sesión' ripple={false} />
-          </List>
-        </Drawer>
-      );
-    }
+    const { drawer, hideDrawer, logout } = this.props;
     return (
       <Drawer active={ drawer } onOverlayClick={hideDrawer} type="right">
         <List selectable>
           <ListSubHeader caption='Menú' />
-          <Link to="/"><ListItem caption="Instalaciones" ripple={false} /></Link>
-          <ListItem caption='Usuarios' ripple={false} />
-          <ListItem caption='Unidades' ripple={false} />
+          <ListItem caption='Instalaciones' ripple={false} />
+          <ListItem caption='Alarmas' ripple={false} />
           <ListDivider />
           <ListItem caption='Configuración' ripple={false} />
-          <ListItem caption='Cerrar sesión' ripple={false} />
+          <ListItem caption='Cerrar sesión' ripple={false} onClick={logout} />
         </List>
       </Drawer>
     );
