@@ -41,6 +41,17 @@ defineSupportCode(({ Given, When, Then }) => {
     });
   });
 
+  When(/^I show historical alarms of unit ID (\d+)$/, (unitId, done) => {
+    const path = PATHS.UNIT_ALARMS_PATH.replace(':unit', unitId.toString());
+    request.get(path, null, token, (error, response, statusCode) => {
+      should.not.exist(error);
+      should.exist(response);
+      should.exist(statusCode);
+      showResponse = { response, statusCode };
+      done();
+    });
+  });
+
   Then(/^I should receive (\d+) alarms and (\d+) as status code$/, (nAlarms, statusCode, done) => {
     should(showResponse.response.data).have.length(nAlarms);
     should(showResponse.statusCode).be.eql(statusCode);
@@ -54,5 +65,11 @@ defineSupportCode(({ Given, When, Then }) => {
         'unit_id');
       next();
     }, done);
+  });
+
+  Then(/^I should receive a (\d+) error with message "([^"]*)"$/, (errorCode, message, done) => {
+    should(showResponse.statusCode).be.eql(errorCode);
+    should(showResponse.response.error).be.eql(message);
+    done();
   });
 });

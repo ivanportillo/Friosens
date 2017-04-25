@@ -34,3 +34,7 @@ Feature: Show historical alarms
   Scenario: Show historical alarms with limit
     When I show historical alarms of last 4 alarms of unit ID 20
     Then I should receive 4 alarms and 200 as status code
+
+  Scenario: Show historial alarms without explicit limit
+    When I show historical alarms of unit ID 20
+    Then I should receive a 400 error with message "Limit is required"
