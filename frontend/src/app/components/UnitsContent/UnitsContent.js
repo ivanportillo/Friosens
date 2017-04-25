@@ -9,13 +9,6 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import styled from 'styled-components';
 
-const Content = styled.div` 
-  padding-top: 2.5em;
-  padding-left: 4em;
-  padding-right: 4em;
-  color: #39796b;
-`;
-
 const Header = styled.div`
   font-size: 1.5em;
   font-style: normal;
@@ -78,12 +71,12 @@ class UnitsContent extends Component {
   render() {
     const { units, isLoadingUnits } = this.props;
     return (
-      <Content>
+      <div>
         <Header>Unidades de la instalación</Header>
         {isLoadingUnits ?
           <ProgressBar type="circular" mode="indeterminate" />
           : this.renderUnits(units)}
-      </Content>);
+      </div>);
   }
 }
 
