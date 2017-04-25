@@ -24,7 +24,15 @@ export const fetchFacilities = () => axios.get(apiPaths.FACILITIES_PATH, {
   headers: { Authorization: getToken() },
 });
 
-export const fetchUnits = (facilityId) => axios.get(apiPaths.FACILITY_UNITS_PATH.replace(':id', facilityId), {
+export const fetchUnits = facilityId => axios.get(apiPaths.FACILITY_UNITS_PATH.replace(':id', facilityId), {
   baseURL: API_BASE,
   headers: { Authorization: getToken() },
 });
+
+export const fetchAlarms = (unitId, limit) => {
+  const path = apiPaths.UNIT_ALARMS_PATH.replace(':unit', unitId);
+  return axios.get(`${path}?limit=${limit}`, {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });
+};
