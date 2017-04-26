@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiPaths from '../../../../backend/router/paths';
+import apiPaths from '../../../../../backend/router/paths';
 
 import { getToken } from '../../utils/token';
 

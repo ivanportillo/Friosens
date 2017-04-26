@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 import * as constants from 'features/auth/actions/constants';
 import * as authActions from 'features/auth/actions';
 
-import { login, fetchAccount } from 'api';
+import { login, fetchAccount } from 'infrastructure/api';
 import { setToken, clearToken, getToken } from 'utils/token';
 import { ROOT_PATH, LOGIN_PATH } from 'routes/paths';
 

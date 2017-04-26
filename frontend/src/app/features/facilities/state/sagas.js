@@ -1,5 +1,5 @@
 import { fork, takeEvery, call, put } from 'redux-saga/effects';
-import { fetchFacilities } from 'api';
+import { fetchFacilities } from 'infrastructure/api';
 import * as constants from 'features/facilities/actions/constants';
 import * as facilityActions from 'features/facilities/actions';
 

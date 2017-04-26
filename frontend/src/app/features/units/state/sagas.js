@@ -1,5 +1,5 @@
 import { fork, takeEvery, call, put } from 'redux-saga/effects';
-import { fetchUnits } from 'api';
+import { fetchUnits } from 'infrastructure/api';
 import * as constants from 'features/units/actions/constants';
 import * as unitsActions from 'features/units/actions';
 
