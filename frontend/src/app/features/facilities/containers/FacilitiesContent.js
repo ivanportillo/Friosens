@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import FacilitiesContent from 'components/FacilitiesContent';
-import { fetchFacilities } from 'actions/user';
+import FacilitiesContent from 'features/facilities/components/FacilitiesContent';
+import { fetchFacilities } from 'features/facilities/actions';
 
 const mapStateToProps = state => ({
   facilities: state.user.facilities.facilities,

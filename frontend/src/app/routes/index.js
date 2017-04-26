@@ -1,12 +1,11 @@
 import React from 'react';
 
 import Login from 'features/auth/containers/Login';
-import FacilitiesContent from 'containers/FacilitiesContent';
-import UnitsContent from 'containers/UnitsContent';
+import FacilitiesContent from 'features/facilities/containers/FacilitiesContent';
+import UnitsContent from 'features/units/containers/UnitsContent';
 import UnitContent from 'containers/UnitContent';
 
 import { Switch } from 'react-router-dom';
-
 
 import createRoute from './routeCreators/route';
 import facilityRouteCreator from './routeCreators/facilityRoute';

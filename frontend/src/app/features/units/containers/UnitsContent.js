@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import UnitsContent from 'components/UnitsContent';
-import { fetchUnits } from 'actions/user';
+import UnitsContent from 'features/units/components/UnitsContent';
+import { fetchUnits } from 'features/units/actions';
 
 const mapStateToProps = (state, ownProps) => ({
   units:

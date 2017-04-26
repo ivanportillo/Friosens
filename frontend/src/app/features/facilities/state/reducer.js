@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import * as constants from 'actions/user/constants';
+import * as constants from 'features/facilities/actions/constants';
 
 export function facilities(state = [], action) {
   switch (action.type) {

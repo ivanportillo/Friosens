@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
@@ -7,7 +7,7 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import styled from 'styled-components';
 
-import * as PATHS from '../../routes/paths';
+import * as PATHS from 'routes/paths';
 
 const Header = styled.div`
   font-size: 1.5em;
@@ -30,27 +30,28 @@ const EmptyLabel = styled.label`
   border-radius: 5px;
 `;
 
-class FacilitiesContent extends Component {
-  static propTypes = {
-    facilities: PropTypes.array.isRequired,
-    fetchFacilities: PropTypes.func.isRequired,
-    isLoadingFacilities: PropTypes.bool.isRequired,
-  };
+class UnitsContent extends Component {
   componentWillMount() {
-    this.props.fetchFacilities();
+    this.props.fetchUnits(this.props.facilityId);
   }
-  renderFacilities = (facilities) => {
-    if (facilities.length) {
-      const facilitiesToRender = facilities.map(facility =>
-        <TableRow key={facility.id}>
+  renderUnits = (units) => {
+    if (units.length) {
+      const unitsToRender = units.map(unit =>
+        <TableRow key={unit.id}>
           <TableCell>
-            {facility.name}
+            {unit.name}
           </TableCell>
           <TableCell>
-            {facility.location}
+            {unit.location}
+          </TableCell>
+          <TableCell>
+            {unit.mark}
+          </TableCell>
+          <TableCell>
+            {unit.unit_model}
           </TableCell>
           <TableCell numeric>
-            <Link to={PATHS.UNITS_PATH.url.replace(':facilityId', facility.id)}><Button icon="chevron_right" ripple={false} /></Link>
+            <Link to={PATHS.UNIT_PATH.url.replace(':facilityId', unit.facility_id).replace(':unitId', unit.id)}><Button icon="chevron_right" ripple={false} /></Link>
           </TableCell>
         </TableRow>);
       return (
@@ -58,24 +59,25 @@ class FacilitiesContent extends Component {
           <TableHead>
             <TableCell><Icon value="assignment" /> Nombre</TableCell>
             <TableCell><Icon value="place" /> Localización</TableCell>
+            <TableCell>Marca</TableCell>
+            <TableCell>Modelo</TableCell>
           </TableHead>
-          {facilitiesToRender}
+          {unitsToRender}
         </Table>);
     }
-    return (<EmptyLabel>No hay instalaciones</EmptyLabel>);
+    return (<EmptyLabel>No hay unidades en esta instalación</EmptyLabel>);
   };
 
   render() {
-    const { facilities, isLoadingFacilities } = this.props;
+    const { units, isLoadingUnits } = this.props;
     return (
       <div>
-        <Header>Mis instalaciones</Header>
-        {isLoadingFacilities ?
+        <Header>Unidades de la instalación</Header>
+        {isLoadingUnits ?
           <ProgressBar type="circular" mode="indeterminate" />
-          : this.renderFacilities(facilities)}
+          : this.renderUnits(units)}
       </div>);
   }
 }
 
-
-export default FacilitiesContent;
+export default UnitsContent;
