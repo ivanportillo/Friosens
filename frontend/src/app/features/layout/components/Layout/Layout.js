@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-import DrawerMenu from 'features/layout/containers/DrawerMenu';
-import Navbar from 'features/layout/containers/Navbar';
+import DrawerMenu from './DrawerMenu';
+import Navbar from './Navbar';
 
 const Content = styled.div` 
   padding-top: 2.5em;
@@ -11,10 +11,14 @@ const Content = styled.div`
   color: #39796b;
 `;
 
-const Layout = ({ children }) =>
+const Layout = ({ children, showDrawer, hideDrawer, drawer, logout }) =>
   <div>
-    <DrawerMenu />
-    <Navbar />
+    <DrawerMenu
+      hideDrawer={hideDrawer}
+      drawer={drawer}
+      logout={logout}
+    />
+    <Navbar showDrawer={showDrawer} />
     <Content>
       {children}
     </Content>
@@ -22,6 +26,10 @@ const Layout = ({ children }) =>
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  drawer: PropTypes.bool.isRequired,
+  hideDrawer: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  showDrawer: PropTypes.func.isRequired,
 };
 
 export default Layout;

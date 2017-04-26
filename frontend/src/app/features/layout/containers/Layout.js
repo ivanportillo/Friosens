@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
-import DrawerMenu from 'features/layout/components/Layout/DrawerMenu';
-
-import { hideDrawer } from 'features/layout/actions';
+import { showDrawer, hideDrawer } from 'features/layout/actions';
 import { logout } from 'features/auth/actions';
+
+import Layout from 'features/layout/components/Layout';
 
 const mapStateToProps = state => ({
   drawer: state.ui.drawer,
@@ -11,8 +11,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  showDrawer: () => dispatch(showDrawer()),
   hideDrawer: () => dispatch(hideDrawer()),
   logout: () => dispatch(logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawerMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
