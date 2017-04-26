@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
       ? state.user.unit.alarms[ownProps.match.params.unitId] : [],
   facilityId: ownProps.match.params.facilityId,
   unitId: ownProps.match.params.unitId,
+  isLoadingAlarms: state.user.unit.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({

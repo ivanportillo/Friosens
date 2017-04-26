@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
+
+import Loader from 'core/components/Loader';
 
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import Button from 'react-toolbox/lib/button';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import styled from 'styled-components';
 
@@ -31,6 +32,12 @@ const EmptyLabel = styled.label`
 `;
 
 class UnitsContent extends Component {
+  static propTypes = {
+    facilityId: PropTypes.string.isRequired,
+    fetchUnits: PropTypes.func.isRequired,
+    isLoadingUnits: PropTypes.bool.isRequired,
+    units: PropTypes.array.isRequired,
+  };
   componentWillMount() {
     this.props.fetchUnits(this.props.facilityId);
   }
@@ -74,7 +81,7 @@ class UnitsContent extends Component {
       <div>
         <Header>Unidades de la instalación</Header>
         {isLoadingUnits ?
-          <ProgressBar type="circular" mode="indeterminate" />
+          <Loader />
           : this.renderUnits(units)}
       </div>);
   }

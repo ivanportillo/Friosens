@@ -1,7 +1,7 @@
 import axios from 'axios';
 import apiPaths from '../../../../backend/router/paths';
 
-import { getToken } from 'utils/token';
+import { getToken } from '../../utils/token';
 
 const API_BASE =
   (process.env.NODE_ENV === 'production') ? `https://${window.location.hostname}` :

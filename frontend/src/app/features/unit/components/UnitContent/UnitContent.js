@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import styled from 'styled-components';
+
+import Loader from 'core/components/Loader';
+
 import { Card, CardTitle } from 'react-toolbox/lib/card';
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import FontIcon from 'react-toolbox/lib/font_icon';
@@ -36,31 +39,34 @@ class UnitContent extends Component {
   }
 
   renderAlarms = (alarms) => {
-    const alarmsToRender = alarms.map(alarm =>
-      <TableRow key={alarm.id}>
-        <TableCell>
-          {moment(alarm.created_at).locale('es').format('LLL')}
-        </TableCell>
-        <TableCell>
-          {alarm.title}
-        </TableCell>
-        <TableCell>
-          {alarm.description}
-        </TableCell>
-      </TableRow>);
-    return (
-      <Table selectable={false}>
-        <TableHead>
-          <TableCell><Icon value="date_range" /> Fecha</TableCell>
-          <TableCell><Icon value="reorder" /> Título</TableCell>
-          <TableCell><Icon value="description" /> Descripción</TableCell>
-        </TableHead>
-        {alarmsToRender}
-      </Table>);
+    if (alarms.length) {
+      const alarmsToRender = alarms.map(alarm =>
+        <TableRow key={alarm.id}>
+          <TableCell>
+            {moment(alarm.created_at).locale('es').format('LLL')}
+          </TableCell>
+          <TableCell>
+            {alarm.title}
+          </TableCell>
+          <TableCell>
+            {alarm.description}
+          </TableCell>
+        </TableRow>);
+      return (
+        <Table selectable={false}>
+          <TableHead>
+            <TableCell><Icon value="date_range" /> Fecha</TableCell>
+            <TableCell><Icon value="reorder" /> Título</TableCell>
+            <TableCell><Icon value="description" /> Descripción</TableCell>
+          </TableHead>
+          {alarmsToRender}
+        </Table>);
+    }
+    return null;
   };
 
   render() {
-    const { alarms } = this.props;
+    const { alarms, isLoadingAlarms } = this.props;
     return (
       <div>
         <Header>Unidad</Header>
@@ -70,7 +76,7 @@ class UnitContent extends Component {
             subtitle={alarms.length ? 'Necesita revisión' : 'Todo en orden'}
           />
         </AlarmsCard>
-        {alarms.length ? this.renderAlarms(alarms) : null}
+        {isLoadingAlarms ? <Loader /> : this.renderAlarms(alarms)}
       </div>
     );
   }

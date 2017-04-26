@@ -11,14 +11,17 @@ const Content = styled.div`
   color: #39796b;
 `;
 
-const Layout = ({ children, showDrawer, hideDrawer, drawer, logout }) =>
+const Layout = ({ children, showDrawer, hideDrawer, drawer, logout, user }) =>
   <div>
     <DrawerMenu
       hideDrawer={hideDrawer}
       drawer={drawer}
       logout={logout}
     />
-    <Navbar showDrawer={showDrawer} />
+    <Navbar
+      showDrawer={showDrawer}
+      user={user}
+    />
     <Content>
       {children}
     </Content>
@@ -30,6 +33,11 @@ Layout.propTypes = {
   hideDrawer: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   showDrawer: PropTypes.func.isRequired,
+  user: PropTypes.string,
+};
+
+Layout.defaultProps = {
+  user: null,
 };
 
 export default Layout;

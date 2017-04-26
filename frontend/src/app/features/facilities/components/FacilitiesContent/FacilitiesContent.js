@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
 
+import Loader from 'core/components/Loader';
+
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import Button from 'react-toolbox/lib/button';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import styled from 'styled-components';
 
@@ -71,7 +72,7 @@ class FacilitiesContent extends Component {
       <div>
         <Header>Mis instalaciones</Header>
         {isLoadingFacilities ?
-          <ProgressBar type="circular" mode="indeterminate" />
+          <Loader />
           : this.renderFacilities(facilities)}
       </div>);
   }

@@ -8,9 +8,7 @@ const DrawerMenu = ({ drawer, hideDrawer, logout }) =>
     <List selectable>
       <ListSubHeader caption="Menú" />
       <ListItem caption="Instalaciones" ripple={false} />
-      <ListItem caption="Alarmas" ripple={false} />
       <ListDivider />
-      <ListItem caption="Configuración" ripple={false} />
       <ListItem caption="Cerrar sesión" ripple={false} onClick={logout} />
     </List>
   </Drawer>;

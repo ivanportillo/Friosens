@@ -8,6 +8,7 @@ import Layout from 'features/layout/components/Layout';
 const mapStateToProps = state => ({
   drawer: state.ui.drawer,
   isAdmin: state.auth.user ? state.auth.user.admin : false,
+  user: state.auth.user ? `${state.auth.user.first_name} ${state.auth.user.last_name}` : null,
 });
 
 const mapDispatchToProps = dispatch => ({

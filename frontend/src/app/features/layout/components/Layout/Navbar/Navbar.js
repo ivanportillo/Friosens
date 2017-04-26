@@ -13,7 +13,7 @@ const GreenAppBar = styled(AppBar)`
   }
 `;
 
-const Navbar = ({ showDrawer }) =>
+const Navbar = ({ showDrawer, user }) =>
   <GreenAppBar
     title="FrioSens"
     rightIcon="menu"
@@ -21,12 +21,17 @@ const Navbar = ({ showDrawer }) =>
     flat
   >
     <Chip>
-      <span>Iván Portillo</span>
+      <span>{user}</span>
     </Chip>
   </GreenAppBar>;
 
 Navbar.propTypes = {
   showDrawer: PropTypes.func.isRequired,
+  user: PropTypes.string,
+};
+
+Navbar.defaultProps = {
+  user: null,
 };
 
 export default Navbar;
