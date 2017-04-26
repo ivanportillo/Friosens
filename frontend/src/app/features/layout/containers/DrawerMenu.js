@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import DrawerMenu from 'components/Layout/DrawerMenu';
+import DrawerMenu from 'features/layout/components/Layout/DrawerMenu';
 
-import { hideDrawer } from 'actions/ui';
+import { hideDrawer } from 'features/layout/actions';
 import { logout } from 'features/auth/actions';
 
 const mapStateToProps = state => ({

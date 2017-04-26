@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
-import Navbar from 'containers/Navbar';
-import DrawerMenu from 'containers/DrawerMenu';
+import DrawerMenu from 'features/layout/containers/DrawerMenu';
+import Navbar from 'features/layout/containers/Navbar';
 
 const Content = styled.div` 
   padding-top: 2.5em;
@@ -19,6 +19,10 @@ const Layout = ({ children }) =>
       {children}
     </Content>
   </div>;
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Layout;
 

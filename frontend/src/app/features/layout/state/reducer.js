@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import * as constants from 'actions/ui/constants';
+import * as constants from 'features/layout/actions/constants';
 
-export function drawer(state = false, action) {
+function drawer(state = false, action) {
   switch (action.type) {
     case constants.SHOW_DRAWER:
       return true;

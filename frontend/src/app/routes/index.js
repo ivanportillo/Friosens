@@ -3,7 +3,7 @@ import React from 'react';
 import Login from 'features/auth/containers/Login';
 import FacilitiesContent from 'features/facilities/containers/FacilitiesContent';
 import UnitsContent from 'features/units/containers/UnitsContent';
-import UnitContent from '../features/unit/containers/UnitContent';
+import UnitContent from 'features/unit/containers/UnitContent';
 
 import { Switch } from 'react-router-dom';
 
