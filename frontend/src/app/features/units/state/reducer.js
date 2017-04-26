@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as constants from 'features/units/actions/constants';
 
-export function units(state = {}, action) {
+function units(state = {}, action) {
   switch (action.type) {
     case constants.RECEIVE_UNITS:
       return {
@@ -13,7 +13,7 @@ export function units(state = {}, action) {
   }
 }
 
-export function isLoading(state = false, action) {
+function isLoading(state = false, action) {
   switch (action.type) {
     case constants.FETCH_UNITS:
       return true;

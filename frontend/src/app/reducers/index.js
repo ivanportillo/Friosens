@@ -3,14 +3,22 @@ import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
 import authReducer from 'features/auth/state/reducer';
+
+import facilitiesReducer from 'features/facilities/state/reducer';
+import unitsReducer from 'features/units/state/reducer';
+import unitReducer from 'features/unit/state/units';
+
 import uiReducer from './ui';
-import userReducer from './user';
 
 export default combineReducers({
   router: routerReducer,
   form: formReducer,
   auth: authReducer,
   ui: uiReducer,
-  user: userReducer,
+  user: combineReducers({
+    facilities: facilitiesReducer,
+    units: unitsReducer,
+    unit: unitReducer,
+  }),
 });
 

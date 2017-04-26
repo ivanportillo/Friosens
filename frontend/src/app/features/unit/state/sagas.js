@@ -1,15 +1,10 @@
 import { fork, takeEvery, call, put } from 'redux-saga/effects';
 import { fetchAlarms } from 'api';
-import * as constants from 'actions/user/constants';
-import * as userActions from 'actions/user';
+import * as constants from 'features/unit/actions/constants';
+import * as unitActions from 'features/unit/actions';
 
-import { watchFacilities } from 'features/facilities/state/sagas';
-import { watchUnits } from 'features/units/state/sagas';
-
-export function* watchUser() {
-  yield fork(watchUnits);
+export function* watchUnit() {
   yield fork(watchFetchAlarms);
-  yield fork(watchFacilities);
 }
 
 function* fetchAlarmsProcess(action) {
@@ -17,10 +12,10 @@ function* fetchAlarmsProcess(action) {
     const { data } = yield call(fetchAlarms, action.unitId, action.limit);
     if (data) {
       const alarms = data.data;
-      yield put(userActions.receiveAlarms(alarms, action.unitId));
+      yield put(unitActions.receiveAlarms(alarms, action.unitId));
     }
   } catch (e) {
-    yield put(userActions.receiveAlarmsFailed(e));
+    yield put(unitActions.receiveAlarmsFailed(e));
   }
 }
 

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import UnitContent from 'components/UnitContent';
-import { fetchAlarms } from 'actions/user';
+import UnitContent from 'features/unit/components/UnitContent';
+import { fetchAlarms } from 'features/unit/actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  alarms: state.user.alarms.alarms[ownProps.match.params.unitId]
-      ? state.user.alarms.alarms[ownProps.match.params.unitId] : [],
+  alarms: state.user.unit.alarms[ownProps.match.params.unitId]
+      ? state.user.unit.alarms[ownProps.match.params.unitId] : [],
   facilityId: ownProps.match.params.facilityId,
   unitId: ownProps.match.params.unitId,
 });

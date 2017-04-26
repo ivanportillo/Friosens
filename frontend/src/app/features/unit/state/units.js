@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import * as constants from 'actions/user/constants';
+import * as constants from 'features/unit/actions/constants';
 
 export function alarms(state = {}, action) {
   switch (action.type) {
