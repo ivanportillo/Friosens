@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects';
 
-import { watchAuth } from './auth';
+import { watchAuth } from 'features/auth/state/saga';
 import { watchUser } from './user';
 
 export default function* rootSaga() {

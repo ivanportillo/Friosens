@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DrawerMenu from 'components/Layout/DrawerMenu';
 
 import { hideDrawer } from 'actions/ui';
-import { logout } from 'actions/auth';
+import { logout } from 'features/auth/actions';
 
 const mapStateToProps = state => ({
   drawer: state.ui.drawer,

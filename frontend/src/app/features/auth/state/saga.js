@@ -1,8 +1,8 @@
 import { fork, call, takeEvery, take, put, race } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { push } from 'react-router-redux';
-import * as constants from 'actions/auth/constants';
-import * as authActions from 'actions/auth';
+import * as constants from 'features/auth/actions/constants';
+import * as authActions from 'features/auth/actions';
 
 import { login, fetchAccount } from 'api';
 import { setToken, clearToken, getToken } from 'utils/token';

@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-
 import Button from 'react-toolbox/lib/button';
-
 import { Field } from 'redux-form';
+
 import LoginInput from './LoginInput';
 
 const LoggingLabel = styled.label`

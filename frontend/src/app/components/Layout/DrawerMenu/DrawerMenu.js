@@ -8,14 +8,14 @@ class DrawerMenu extends Component {
   render() {
     const { drawer, hideDrawer, logout } = this.props;
     return (
-      <Drawer active={ drawer } onOverlayClick={hideDrawer} type="right">
+      <Drawer active={drawer} onOverlayClick={hideDrawer} type="right">
         <List selectable>
-          <ListSubHeader caption='Menú' />
-          <ListItem caption='Instalaciones' ripple={false} />
-          <ListItem caption='Alarmas' ripple={false} />
+          <ListSubHeader caption="Menú" />
+          <ListItem caption="Instalaciones" ripple={false} />
+          <ListItem caption="Alarmas" ripple={false} />
           <ListDivider />
-          <ListItem caption='Configuración' ripple={false} />
-          <ListItem caption='Cerrar sesión' ripple={false} onClick={logout} />
+          <ListItem caption="Configuración" ripple={false} />
+          <ListItem caption="Cerrar sesión" ripple={false} onClick={logout} />
         </List>
       </Drawer>
     );

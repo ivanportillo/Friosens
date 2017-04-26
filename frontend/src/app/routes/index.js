@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Login from 'containers/Login';
+import Login from 'features/auth/containers/Login';
 import FacilitiesContent from 'containers/FacilitiesContent';
 import UnitsContent from 'containers/UnitsContent';
 import UnitContent from 'containers/UnitContent';

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import * as constants from 'actions/auth/constants';
+import * as constants from 'features/auth/actions/constants';
 
-import { getToken } from 'utils/token';
+import { getToken } from '../../../utils/token';
 
 export function user(state = null, action) {
   switch(action.type) {
