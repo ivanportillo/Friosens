@@ -5,6 +5,11 @@ module.exports = OrganizationEntity => {
     OrganizationEntity.create(organization, cb);
   };
 
+  const getAll = (cb) => {
+    const query = {};
+    OrganizationEntity.find(query, cb);
+  };
+
   const findOneByName = (name, cb) => {
     const query = { name };
     OrganizationEntity.one(query, cb);
@@ -25,5 +30,5 @@ module.exports = OrganizationEntity => {
     });
   };
 
-  return { create, findOneByName, findById, removeById };
+  return { create, getAll, findOneByName, findById, removeById };
 };
