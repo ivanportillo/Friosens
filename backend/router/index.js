@@ -30,6 +30,7 @@ module.exports = router => {
   router.get(PATHS.ACCOUNT_PATH, requireAuth, usersController.getAccount);
 
   // ORGANIZATIONS
+  router.get(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.showOrganizations);
   router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
   router.delete(PATHS.ORGANIZATION_PATH, allowAccessAdmin, organizationsController.removeOrganization);
 
