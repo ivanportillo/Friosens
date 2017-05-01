@@ -4,6 +4,7 @@ const usersActions = require('../../action/user');
 const signin = usersActions.signin;
 const register = usersActions.register;
 const getAccount = usersActions.getAccount;
+const removeUser = usersActions.removeUser;
 
 const responseBuilder = require('../../utils/responseBuilder');
 
@@ -26,5 +27,8 @@ module.exports = {
   },
   getAccount: (req, res) => {
     getAccount(req.payload.id, responseBuilder.createResponse(req, res));
+  },
+  removeUser: (req, res) => {
+    removeUser(req.params.user, responseBuilder.createResponse(req, res));
   }
 };
