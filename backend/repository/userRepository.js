@@ -8,6 +8,11 @@ module.exports = UserEntity => {
     UserEntity.one(query, cb);
   };
 
+  const getAll = (cb) => {
+    const query = {};
+    UserEntity.find(query).omit("password", "salt").run(cb);
+  };
+
   const findById = (userId, cb) => {
     const query = { id: userId };
     UserEntity.find(query, cb);
@@ -34,5 +39,5 @@ module.exports = UserEntity => {
     });
   };
 
-  return { findOneById, create, findByEmail, findById, removeByOrganizationId };
+  return { findOneById, getAll, create, findByEmail, findById, removeByOrganizationId };
 };
