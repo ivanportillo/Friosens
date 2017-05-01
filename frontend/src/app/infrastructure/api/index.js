@@ -47,3 +47,11 @@ export const removeOrganization = organizationId =>
     baseURL: API_BASE,
     headers: { Authorization: getToken() },
   });
+
+export const createOrganization = (name, orgType) => axios.post(apiPaths.ORGANIZATIONS_PATH, {
+  name,
+  type: orgType,
+}, {
+  baseURL: API_BASE,
+  headers: { Authorization: getToken() },
+});
