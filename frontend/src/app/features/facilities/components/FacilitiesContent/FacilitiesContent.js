@@ -1,34 +1,21 @@
 import React, { Component, PropTypes } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Loader from 'core/components/Loader';
+import Header from 'core/components/Header';
+import EmptyLabel from 'core/components/EmptyLabel';
 
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import Button from 'react-toolbox/lib/button';
 import FontIcon from 'react-toolbox/lib/font_icon';
-import styled from 'styled-components';
 
 import * as PATHS from 'routes/paths';
-
-const Header = styled.div`
-  font-size: 1.5em;
-  font-style: normal;
-  font-weight: normal;
-  padding-bottom: 1em;
-`;
 
 const Icon = styled(FontIcon)`
   &&& {
     font-size: 1em;
   }
-`;
-
-const EmptyLabel = styled.label`
-  margin: 1em;
-  padding: 0.5em;
-  color: white;
-  background-color: #8ac148;
-  border-radius: 5px;
 `;
 
 class FacilitiesContent extends Component {

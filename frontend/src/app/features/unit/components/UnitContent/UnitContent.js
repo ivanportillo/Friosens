@@ -3,17 +3,11 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 import Loader from 'core/components/Loader';
+import Header from 'core/components/Header';
 
 import { Card, CardTitle } from 'react-toolbox/lib/card';
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import FontIcon from 'react-toolbox/lib/font_icon';
-
-const Header = styled.div`
-  font-size: 1.5em;
-  font-style: normal;
-  font-weight: normal;
-  padding-bottom: 1em;
-`;
 
 const AlarmsCard = styled(Card)`
   &&& {
