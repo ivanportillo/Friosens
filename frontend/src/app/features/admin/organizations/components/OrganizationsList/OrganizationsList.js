@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import * as PATHS from 'routes/paths';
 
 import Loader from 'core/components/Loader';
 import Header from 'core/components/Header';
@@ -70,7 +73,7 @@ class OrganizationsList extends Component {
       <div>
         <TopControls>
           <Header>Organizaciones</Header>
-          <ActionButton label="New organization" />
+          <Link to={PATHS.ADMIN_NEW_ORGANIZATION_PATH.url}><ActionButton label="Nueva organización" /></Link>
         </TopControls>
         {!isLoadingOrganizations
           ? this.renderOrganizations(organizations, removeOrganization)
