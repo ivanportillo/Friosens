@@ -36,3 +36,14 @@ export const fetchAlarms = (unitId, limit) => {
     headers: { Authorization: getToken() },
   });
 };
+
+export const fetchOrganizations = () => axios.get(apiPaths.ORGANIZATIONS_PATH, {
+  baseURL: API_BASE,
+  headers: { Authorization: getToken() },
+});
+
+export const removeOrganization = organizationId =>
+  axios.delete(apiPaths.ORGANIZATION_PATH.replace(':organization', organizationId), {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });
