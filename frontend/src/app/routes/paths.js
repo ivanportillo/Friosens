@@ -23,3 +23,8 @@ export const ADMIN_ORGANIZATIONS_PATH = {
   url: adminPath('organizations'),
   name: 'Organizations',
 };
+
+export const ADMIN_NEW_ORGANIZATION_PATH = {
+  url: adminPath('organizations/new'),
+  name: 'Organizations',
+};
