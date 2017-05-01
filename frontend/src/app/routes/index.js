@@ -5,6 +5,8 @@ import FacilitiesContent from 'features/facilities/containers/FacilitiesContent'
 import UnitsContent from 'features/units/containers/UnitsContent';
 import UnitContent from 'features/unit/containers/UnitContent';
 
+import OrganizationsList from 'features/admin/organizations/containers/OrganizationsList';
+
 import { Switch } from 'react-router-dom';
 
 import createRoute from './routeCreators/route';
@@ -18,10 +20,21 @@ const createRoutes = (store) => {
 
   return (
     <Switch>
-      <FacilityRoute exact needAuth component={FacilitiesContent} path={PATHS.ROOT_PATH.url} />
+      <FacilityRoute
+        exact
+        needAuth
+        component={FacilitiesContent}
+        path={PATHS.FACILITIES_PATH.url}
+      />
       <FacilityRoute exact needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
       <FacilityRoute needAuth component={UnitContent} path={PATHS.UNIT_PATH.url} />
       <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH.url} />
+      <FacilityRoute
+        exact
+        needAuth
+        component={OrganizationsList}
+        path={PATHS.ADMIN_ORGANIZATIONS_PATH.url}
+      />
     </Switch>);
 };
 
