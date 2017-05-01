@@ -37,5 +37,8 @@ module.exports = router => {
   // READINGS
   router.post(PATHS.REGISTER_READING_PATH, onlyDevice, readingsController.registerReading);
 
+  // USER
+  router.delete(PATHS.USER_PATH, allowAccessAdmin, usersController.removeUser);
+
   return router;
 };
