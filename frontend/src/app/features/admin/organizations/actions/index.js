@@ -19,3 +19,11 @@ export function removeOrganization(organizationId) {
     organizationId,
   };
 }
+
+export function createOrganization(name, orgType) {
+  return {
+    type: constants.CREATE_ORGANIZATION,
+    name,
+    orgType,
+  };
+}
