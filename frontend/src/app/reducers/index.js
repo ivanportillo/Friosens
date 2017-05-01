@@ -8,6 +8,7 @@ import uiReducer from 'features/layout/state/reducer';
 import facilitiesReducer from 'features/facilities/state/reducer';
 import unitsReducer from 'features/units/state/reducer';
 import unitReducer from 'features/unit/state/reducer';
+import adminReducer from 'features/admin/state/reducer';
 
 export default combineReducers({
   router: routerReducer,
@@ -19,5 +20,6 @@ export default combineReducers({
     units: unitsReducer,
     unit: unitReducer,
   }),
+  admin: adminReducer,
 });
 
