@@ -21,13 +21,13 @@ const Navbar = ({ showDrawer, user }) =>
     flat
   >
     <Chip>
-      <span>{user}</span>
+      <span>{user && `${user.first_name} ${user.last_name}`}</span>
     </Chip>
   </GreenAppBar>;
 
 Navbar.propTypes = {
   showDrawer: PropTypes.func.isRequired,
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 Navbar.defaultProps = {

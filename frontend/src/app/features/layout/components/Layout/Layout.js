@@ -17,6 +17,7 @@ const Layout = ({ children, showDrawer, hideDrawer, drawer, logout, user }) =>
       hideDrawer={hideDrawer}
       drawer={drawer}
       logout={logout}
+      user={user}
     />
     <Navbar
       showDrawer={showDrawer}
@@ -33,7 +34,7 @@ Layout.propTypes = {
   hideDrawer: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   showDrawer: PropTypes.func.isRequired,
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 Layout.defaultProps = {
