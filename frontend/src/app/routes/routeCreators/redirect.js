@@ -12,7 +12,7 @@ const redirection = ({ needAuth, state }) => {
   }
 
   if (!needAuth && getToken()) {
-    return <Redirect to={PATHS.ROOT_PATH.url} />;
+    return <Redirect to={PATHS.FACILITIES_PATH.url} />;
   }
   return undefined;
 };
