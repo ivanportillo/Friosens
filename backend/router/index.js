@@ -38,6 +38,7 @@ module.exports = router => {
   router.post(PATHS.REGISTER_READING_PATH, onlyDevice, readingsController.registerReading);
 
   // USER
+  router.get(PATHS.USERS_PATH, allowAccessAdmin, usersController.showUsers);
   router.delete(PATHS.USER_PATH, allowAccessAdmin, usersController.removeUser);
 
   return router;

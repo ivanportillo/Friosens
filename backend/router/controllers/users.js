@@ -5,6 +5,7 @@ const signin = usersActions.signin;
 const register = usersActions.register;
 const getAccount = usersActions.getAccount;
 const removeUser = usersActions.removeUser;
+const showUsers = usersActions.showUsers;
 
 const responseBuilder = require('../../utils/responseBuilder');
 
@@ -30,5 +31,8 @@ module.exports = {
   },
   removeUser: (req, res) => {
     removeUser(req.params.user, responseBuilder.createResponse(req, res));
+  },
+  showUsers: (req, res) => {
+    showUsers(responseBuilder.createResponse(req, res));
   }
 };
