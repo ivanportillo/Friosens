@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from 'react-toolbox/lib/button';
 import { Field } from 'redux-form';
 
-import LoginInput from './LoginInput';
+import FormInput from 'core/components/FormInput';
 
 const LoggingLabel = styled.label`
   margin: 1em;
@@ -51,8 +51,8 @@ const Login = ({ login, handleSubmit, isLogging, loginError }) =>
     <LoginBox>
       <h1>FrioSens</h1>
       <form onSubmit={handleSubmit(login)}>
-        <Field name="email" type="text" label="E-mail" component={LoginInput} />
-        <Field name="password" type="password" label="Contraseña" component={LoginInput} />
+        <Field name="email" type="text" label="E-mail" component={FormInput} />
+        <Field name="password" type="password" label="Contraseña" component={FormInput} />
         <SubmitButton type="submit" label="Entrar" ripple={false} />
         {isLogging && <LoggingLabel htmlFor="error">Iniciando sesión...</LoggingLabel>}
         {loginError && <ErrorLabel htmlFor="error">{loginError}</ErrorLabel> }
