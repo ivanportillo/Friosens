@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Remove user
   As administrator
   I want to be able to remove user when it is no longer necessary
