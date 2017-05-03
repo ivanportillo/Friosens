@@ -9,6 +9,7 @@ import ActionButton from 'core/components/ActionButton';
 const types = [
   { value: 'company', label: 'Compañía' },
   { value: 'freelance', label: 'Autónomo' },
+  { value: 'particular', label: 'Particular' },
 ];
 
 const CreateOrganization = ({ handleSubmit, createOrganization }) =>
