@@ -7,6 +7,7 @@ import UnitContent from 'features/unit/containers/UnitContent';
 
 import OrganizationsList from 'features/admin/organizations/containers/OrganizationsList';
 import CreateOrganization from 'features/admin/organizations/containers/CreateOrganization';
+import Loading from 'features/layout/containers/Loading';
 
 import { Switch } from 'react-router-dom';
 
@@ -20,29 +21,31 @@ const createRoutes = (store) => {
   const FacilityRoute = facilityRouteCreator(Route);
 
   return (
-    <Switch>
-      <FacilityRoute
-        exact
-        needAuth
-        component={FacilitiesContent}
-        path={PATHS.FACILITIES_PATH.url}
-      />
-      <FacilityRoute exact needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
-      <FacilityRoute needAuth component={UnitContent} path={PATHS.UNIT_PATH.url} />
-      <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH.url} />
-      <FacilityRoute
-        exact
-        needAuth
-        component={OrganizationsList}
-        path={PATHS.ADMIN_ORGANIZATIONS_PATH.url}
-      />
-      <FacilityRoute
-        exact
-        needAuth
-        component={CreateOrganization}
-        path={PATHS.ADMIN_NEW_ORGANIZATION_PATH.url}
-      />
-    </Switch>);
+    <Loading>
+      <Switch>
+        <FacilityRoute
+          exact
+          needAuth
+          component={FacilitiesContent}
+          path={PATHS.FACILITIES_PATH.url}
+        />
+        <FacilityRoute exact needAuth component={UnitsContent} path={PATHS.UNITS_PATH.url} />
+        <FacilityRoute needAuth component={UnitContent} path={PATHS.UNIT_PATH.url} />
+        <Route needAuth={false} component={Login} path={PATHS.LOGIN_PATH.url} />
+        <FacilityRoute
+          exact
+          needAdmin
+          component={OrganizationsList}
+          path={PATHS.ADMIN_ORGANIZATIONS_PATH.url}
+        />
+        <FacilityRoute
+          exact
+          needAdmin
+          component={CreateOrganization}
+          path={PATHS.ADMIN_NEW_ORGANIZATION_PATH.url}
+        />
+      </Switch>
+    </Loading>);
 };
 
 
