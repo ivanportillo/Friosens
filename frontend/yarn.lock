@@ -1842,6 +1842,10 @@ domhandler@2.1:
   dependencies:
     domelementtype "1"
 
+domkit@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/domkit/-/domkit-0.0.1.tgz#88399d586794efc1154fec6c22cfe50f19bd4dbb"
+
 domutils@1.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.1.6.tgz#bddc3de099b9a2efacc51c623f28f416ecc57485"
@@ -2582,6 +2586,12 @@ graceful-fs@^4.1.2:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+halogenium@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/halogenium/-/halogenium-1.1.1.tgz#34e51e85f967cbfa3cc4bfabd142981f74be08b5"
+  dependencies:
+    domkit "0.0.1"
 
 handle-thing@^1.2.4:
   version "1.2.5"
