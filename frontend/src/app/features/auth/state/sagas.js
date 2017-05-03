@@ -6,7 +6,7 @@ import * as authActions from 'features/auth/actions';
 
 import { login, fetchAccount } from 'infrastructure/api';
 import { setToken, clearToken, getToken } from 'utils/token';
-import { ROOT_PATH, LOGIN_PATH } from 'routes/paths';
+import { LOGIN_PATH, ADMIN_ORGANIZATIONS_PATH } from 'routes/paths';
 
 export function* watchAuth() {
   yield fork(watchLogin);
@@ -31,7 +31,7 @@ function* loginProcess(action) {
         timeout: call(delay, 5000),
       });
       if (appBooted) {
-        yield put(push(ROOT_PATH.url));
+        yield put(push(ADMIN_ORGANIZATIONS_PATH.url));
       } else {
         yield put(authActions.loginFailed('Tiempo de espera excedido'));
       }
@@ -70,6 +70,7 @@ function* fetchAccountProcess() {
 
 function* logoutProcess() {
   yield call(clearToken);
+  yield put(authActions.receiveAccount(null));
   yield put(push(LOGIN_PATH.url));
 }
 
