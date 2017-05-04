@@ -16,9 +16,9 @@ const db = database.getDb();
 createAlarmEntity(orm, db);
 createFacilityEntity(orm, db);
 createReadingEntity(orm, db);
+createOrganizationEntity(orm, db);
 createUserEntity(orm, db);
 createUnitEntity(orm, db);
-createOrganizationEntity(orm, db);
 
 module.exports = {
   Alarm: db.models.alarm,
