@@ -55,3 +55,8 @@ export const createOrganization = (name, orgType) => axios.post(apiPaths.ORGANIZ
   baseURL: API_BASE,
   headers: { Authorization: getToken() },
 });
+
+export const fetchUsers = () => axios.get(apiPaths.USERS_PATH, {
+  baseURL: API_BASE,
+  headers: { Authorization: getToken() },
+});
