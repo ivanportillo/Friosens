@@ -60,3 +60,9 @@ export const fetchUsers = () => axios.get(apiPaths.USERS_PATH, {
   baseURL: API_BASE,
   headers: { Authorization: getToken() },
 });
+
+export const removeUser = userId =>
+  axios.delete(apiPaths.USER_PATH.replace(':user', userId), {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });

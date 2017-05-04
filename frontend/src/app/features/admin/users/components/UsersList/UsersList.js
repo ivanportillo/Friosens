@@ -30,14 +30,14 @@ class UsersList extends Component {
   static propTypes = {
     fetchUsers: PropTypes.func.isRequired,
     isLoadingUsers: PropTypes.bool.isRequired,
+    removeUser: PropTypes.func.isRequired,
     users: PropTypes.array.isRequired,
-
   };
   componentWillMount() {
     this.props.fetchUsers();
   }
 
-  renderUsers = (users) => {
+  renderUsers = (users, removeUser) => {
     if (users.length) {
       const usersToRender = users.map(user =>
         <TableRow key={user.id}>
@@ -57,7 +57,7 @@ class UsersList extends Component {
             {user.organization ? <Link to={PATHS.ADMIN_ORGANIZATIONS_PATH.url}>{user.organization.name}</Link> : 'Administrador'}
           </TableCell>
           <TableCell numeric>
-            <DeleteButton action={() => console.log('LUL')} />
+            <DeleteButton action={() => removeUser(user.id)} />
           </TableCell>
         </TableRow>);
       return (
@@ -75,7 +75,7 @@ class UsersList extends Component {
     return (<EmptyLabel>No existe ningún usuario</EmptyLabel>);
   };
   render() {
-    const { users, isLoadingUsers } = this.props;
+    const { users, isLoadingUsers, removeUser } = this.props;
     return (
       <div>
         <TopControls>
@@ -83,7 +83,7 @@ class UsersList extends Component {
           <Link to={PATHS.ADMIN_NEW_USER_PATH.url}><ActionButton label="Nuevo usuario" /></Link>
         </TopControls>
         {!isLoadingUsers
-          ? this.renderUsers(users)
+          ? this.renderUsers(users, removeUser)
           : <Loader />}
       </div>
     );
