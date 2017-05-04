@@ -28,3 +28,14 @@ export const ADMIN_NEW_ORGANIZATION_PATH = {
   url: adminPath('organizations/new'),
   name: 'Organizations',
 };
+
+export const ADMIN_USERS_PATH = {
+  url: adminPath('users'),
+  name: 'Users',
+};
+
+export const ADMIN_NEW_USER_PATH = {
+  url: adminPath('users/new'),
+  name: 'Users',
+};
+
