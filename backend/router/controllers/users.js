@@ -20,9 +20,10 @@ module.exports = {
         company: req.body.company,
         address: req.body.address,
         telephone: req.body.telephone,
-        admin: req.body.admin,
+        admin: req.body.admin ? JSON.parse(req.body.admin) : false,
         email: req.body.email,
         password: req.body.password,
+        organization_id: req.body.organization_id
     };
     register(user, responseBuilder.createResponse(req, res));
   },
