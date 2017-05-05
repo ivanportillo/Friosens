@@ -11,7 +11,6 @@ module.exports = userRepository => {
           user.getOrganization((err, organization) => {
             if (err) next(err);
             else {
-              console.log(user);
               user.organization = organization;
               next(null, user);
             }
