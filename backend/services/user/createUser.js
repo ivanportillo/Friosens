@@ -8,12 +8,10 @@ module.exports = (UserRepository, encrypt) => {
         const {
             first_name,
             last_name,
-            company,
-            address,
-            telephone,
             email,
             password,
-            admin
+            admin,
+            organization_id
         } = user;
         const error = msg => cb(ValidationError.create(msg));
         // http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
@@ -23,6 +21,8 @@ module.exports = (UserRepository, encrypt) => {
         else if(!first_name) error('First name is required');
         else if(!last_name) error('Last name is required');
         else if(!password) error('Password is required');
+        else if(organization_id && admin) error('An administrator cant have a organization');
+        else if(!organization_id && !admin) error('A user should have a organization or be admin');
         else cb();
         // TO-DO: More validation
     };
