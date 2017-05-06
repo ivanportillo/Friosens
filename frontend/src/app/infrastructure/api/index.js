@@ -66,3 +66,8 @@ export const removeUser = userId =>
     baseURL: API_BASE,
     headers: { Authorization: getToken() },
   });
+
+export const createUser = user => axios.post(apiPaths.USERS_PATH, user, {
+  baseURL: API_BASE,
+  headers: { Authorization: getToken() },
+});
