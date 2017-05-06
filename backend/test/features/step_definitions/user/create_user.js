@@ -29,7 +29,7 @@ defineSupportCode(({ Given, When, Then }) => {
 
     When(/^I create a new user with the following data:$/, function (table, done) {
         const user = table.hashes()[0];
-        request.post(PATHS.REGISTER_PATH, user, token, (error, response, statusCode) => {
+        request.post(PATHS.USERS_PATH, user, token, (error, response, statusCode) => {
             should.not.exist(error);
             responseCreate = { error, response, statusCode };
             done();
