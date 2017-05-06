@@ -35,7 +35,7 @@ defineSupportCode(({ Given, When, Then }) => {
       location: table.hashes()[0].location,
       organizationId: int
     };
-    request.post(PATHS.FACILITIES_PATH, payload, token, (error, response, statusCode) => {
+    request.post(PATHS.ADMIN_FACILITIES_PATH, payload, token, (error, response, statusCode) => {
       should.not.exist(error);
       responseCreate = { response, statusCode };
       done();
