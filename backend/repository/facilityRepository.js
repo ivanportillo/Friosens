@@ -8,6 +8,11 @@ module.exports = FacilityEntity => {
     FacilityEntity.create(facility, cb);
   };
 
+  const getAll = (cb) => {
+    const query = {};
+    FacilityEntity.find(query, cb);
+  };
+
   const findOneById = (facilityId, cb) => {
     const query = { id: facilityId };
     FacilityEntity.one(query, cb);
@@ -50,6 +55,7 @@ module.exports = FacilityEntity => {
 
   return {
     create,
+    getAll,
     findByOrganizationId,
     removeById,
     findById,
