@@ -26,7 +26,6 @@ module.exports = router => {
 
   // AUTH
   router.post(PATHS.LOGIN_PATH, usersController.login);
-  router.post(PATHS.REGISTER_PATH, allowAccessAdmin, usersController.register);
   router.get(PATHS.ACCOUNT_PATH, requireAuth, usersController.getAccount);
 
   // ORGANIZATIONS
@@ -39,6 +38,7 @@ module.exports = router => {
 
   // USER
   router.get(PATHS.USERS_PATH, allowAccessAdmin, usersController.showUsers);
+  router.post(PATHS.USERS_PATH, allowAccessAdmin, usersController.register);
   router.delete(PATHS.USER_PATH, allowAccessAdmin, usersController.removeUser);
 
   return router;
