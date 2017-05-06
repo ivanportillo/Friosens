@@ -16,7 +16,6 @@ module.exports = (facilityRepository, unitRepository) => {
   const _removeUnits = (facilityId, cb) => {
     unitRepository.findByFacilityId(facilityId, (err, units) => {
       if(err) cb(err);
-      else if(!units.length) cb(NotFoundError.create('Not found units'));
       else {
         eachSeries(units, (unit, next) => {
           unit.remove(next);
