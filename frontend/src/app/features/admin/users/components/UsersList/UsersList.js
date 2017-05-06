@@ -9,6 +9,7 @@ import Header from 'core/components/Header';
 import EmptyLabel from 'core/components/EmptyLabel';
 import ActionButton from 'core/components/ActionButton';
 import DeleteButton from 'core/components/DeleteButton';
+import TopControls from 'core/components/TopControls';
 
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
 import FontIcon from 'react-toolbox/lib/font_icon';
@@ -18,12 +19,6 @@ const Icon = styled(FontIcon)`
   &&& {
     font-size: 1em;
   }
-`;
-
-const TopControls = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
 `;
 
 class UsersList extends Component {
