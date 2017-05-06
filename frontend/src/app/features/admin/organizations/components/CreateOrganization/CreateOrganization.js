@@ -8,6 +8,7 @@ import ActionButton from 'core/components/ActionButton';
 import FormLayout from 'core/components/FormLayout';
 import FormContainer from 'core/components/FormContainer';
 import InlineInputs from 'core/components/InlineInputs';
+import FormTitle from 'core/components/FormTitle';
 
 const types = [
   { value: 'company', label: 'Compañía' },
@@ -21,6 +22,7 @@ const CreateOrganization = ({ handleSubmit, createOrganization }) =>
     <FormLayout>
       <FormContainer>
         <form onSubmit={handleSubmit(createOrganization)}>
+          <FormTitle>Datos de la organización</FormTitle>
           <InlineInputs>
             <Field name="name" type="text" label="Nombre" width={'49.6%'} component={FormInput} />
             <Field
