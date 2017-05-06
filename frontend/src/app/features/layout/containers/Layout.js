@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { showDrawer, hideDrawer } from 'features/layout/actions';
 import { logout } from 'features/auth/actions';
@@ -17,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

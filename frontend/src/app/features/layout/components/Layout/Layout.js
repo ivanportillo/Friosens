@@ -11,13 +11,14 @@ const Content = styled.div`
   color: #39796b;
 `;
 
-const Layout = ({ children, showDrawer, hideDrawer, drawer, logout, user }) =>
+const Layout = ({ children, showDrawer, hideDrawer, drawer, logout, user, location: { pathname } }) =>
   <div>
     <DrawerMenu
       hideDrawer={hideDrawer}
       drawer={drawer}
       logout={logout}
       user={user}
+      pathname={pathname}
     />
     <Navbar
       showDrawer={showDrawer}
