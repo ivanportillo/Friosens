@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 
 import Drawer from 'react-toolbox/lib/drawer';
 import { List, ListItem, ListSubHeader, ListDivider } from 'react-toolbox/lib/list';
+
+import * as PATHS from 'routes/paths';
 
 const DrawerMenu = ({ drawer, hideDrawer, logout, user }) =>
   <Drawer active={drawer} onOverlayClick={hideDrawer} type="right">
@@ -12,10 +15,10 @@ const DrawerMenu = ({ drawer, hideDrawer, logout, user }) =>
           <ListItem caption="Instalaciones" ripple={false} />
         </List> :
         <List selectable>
-          <ListItem caption="Organizaciones" ripple={false} />
-          <ListItem caption="Usuarios" ripple={false} />
-          <ListItem caption="Instalaciones" ripple={false} />
-          <ListItem caption="Unidades" ripple={false} />
+          <Link to={PATHS.ADMIN_ORGANIZATIONS_PATH.url}><ListItem caption="Organizaciones" ripple={false} /></Link>
+          <Link to={PATHS.ADMIN_USERS_PATH.url}><ListItem caption="Usuarios" ripple={false} /></Link>
+          <Link to={PATHS.ADMIN_FACILITIES_PATH.url}><ListItem caption="Instalaciones" ripple={false} /></Link>
+            <Link to={PATHS.ADMIN_UNITS_PATH.url}><ListItem caption="Unidades" ripple={false} /></Link>
         </List>
       }
       <ListDivider />
