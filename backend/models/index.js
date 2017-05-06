@@ -13,12 +13,12 @@ const createOrganizationEntity = require('./organizationEntity');
 
 const db = database.getDb();
 
-createAlarmEntity(orm, db);
-createFacilityEntity(orm, db);
-createReadingEntity(orm, db);
 createOrganizationEntity(orm, db);
 createUserEntity(orm, db);
+createFacilityEntity(orm, db);
 createUnitEntity(orm, db);
+createReadingEntity(orm, db);
+createAlarmEntity(orm, db);
 
 module.exports = {
   Alarm: db.models.alarm,
