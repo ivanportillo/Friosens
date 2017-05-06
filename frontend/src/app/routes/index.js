@@ -9,6 +9,7 @@ import OrganizationsList from 'features/admin/organizations/containers/Organizat
 import CreateOrganization from 'features/admin/organizations/containers/CreateOrganization';
 
 import UsersList from 'features/admin/users/containers/UsersList';
+import CreateUser from 'features/admin/users/containers/CreateUser';
 
 import Loading from 'features/layout/containers/Loading';
 
@@ -52,6 +53,12 @@ const createRoutes = (store) => {
           needAdmin
           component={UsersList}
           path={PATHS.ADMIN_USERS_PATH.url}
+        />
+        <FacilityRoute
+          exact
+          needAdmin
+          component={CreateUser}
+          path={PATHS.ADMIN_NEW_USER_PATH.url}
         />
       </Switch>
     </Loading>);
