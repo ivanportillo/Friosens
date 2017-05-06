@@ -1,8 +1,13 @@
 import React, { PropTypes } from 'react';
+import styled from 'styled-components';
 import Dropdown from 'react-toolbox/lib/dropdown';
 
+const StyledDropdown = styled(Dropdown)`
+  width: ${props => props.width ? props.width : '100%'}
+`;
+
 const FormInput = ({ source, label, input, meta: { error, touched }, ...rest }) =>
-  <Dropdown source={source} {...input} label={label} {...rest} />;
+  <StyledDropdown source={source} {...input} label={label} {...rest} />;
 
 FormInput.propTypes = {
   input: PropTypes.object.isRequired,
