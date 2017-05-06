@@ -10,7 +10,7 @@ import * as PATHS from 'routes/paths';
 export function* watchUsers() {
   yield fork(watchFetchUsers);
   yield fork(watchRemoveUser);
-  //yield fork(watchCreateUser);
+  yield fork(watchCreateUser);
 }
 
 export function* fetchUsersProcess() {
@@ -35,17 +35,17 @@ export function* removeUserProcess(action) {
     console.error(e);
   }
 }
-/*
+
 export function* createUserProcess(action) {
   try {
-    const { data } = yield call(api.createOrganization, action.name, action.orgType);
-    if (data.message) {
-      yield put(push(PATHS.ADMIN_ORGANIZATIONS_PATH.url));
+    const { data } = yield call(api.createUser, action.user);
+    if (data.data) {
+      yield put(push(PATHS.ADMIN_USERS_PATH.url));
     }
   } catch (e) {
     console.error(e);
   }
-}*/
+}
 
 export function* watchFetchUsers() {
   yield takeEvery(constants.FETCH_USERS, fetchUsersProcess);
@@ -54,7 +54,7 @@ export function* watchFetchUsers() {
 export function* watchRemoveUser() {
   yield takeEvery(constants.REMOVE_USER, removeUserProcess);
 }
-/*
+
 export function* watchCreateUser() {
   yield takeEvery(constants.CREATE_USER, createUserProcess);
-}*/
+}
