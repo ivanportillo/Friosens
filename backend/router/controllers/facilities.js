@@ -4,6 +4,7 @@ const facilitiesActions = require('../../action/facility');
 const createFacility = facilitiesActions.createFacility;
 const removeFacility = facilitiesActions.removeFacility;
 const showFacilities = facilitiesActions.showFacilities;
+const showFacilitiesAdmin = facilitiesActions.showFacilitiesAdmin;
 
 const unitsActions = require('../../action/unit');
 const showUnits = unitsActions.showUnits;
@@ -24,10 +25,13 @@ module.exports = {
     createFacility(facility, req.body.organizationId, responseBuilder.createResponse(req, res));
   },
   removeFacility: (req, res) => {
-    removeFacility(req.params.id, responseBuilder.createResponse(req, res));
+    removeFacility(req.params.facility, responseBuilder.createResponse(req, res));
   },
   showFacilities: (req, res) => {
     showFacilities(req.payload.organization_id, responseBuilder.createResponse(req, res));
+  },
+  showFacilitiesAdmin: (req, res) => {
+    showFacilitiesAdmin(responseBuilder.createResponse(req, res));
   },
   getUnits: (req, res) => {
     showUnits(req.params.id, responseBuilder.createResponse(req, res));
