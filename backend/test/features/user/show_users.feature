@@ -5,6 +5,9 @@ Feature: Show users
 
   Background:
     Given [show-users] I'm logged in as an administrator
+    And the following organization:
+    | id | name           | type    |
+    | 20 | MyOrganization | company |
 
     Scenario: Show users when there are 1 users (admin user)
       When I show the users
