@@ -14,9 +14,7 @@ const onlyDevice = middlewares.onlyDevice;
 
 module.exports = router => {
   // FACILITY
-  router.post(PATHS.FACILITIES_PATH, allowAccessAdmin, facilitiesController.createFacility);
   router.get(PATHS.FACILITIES_PATH, allowAccessUser, facilitiesController.showFacilities);
-  router.delete(PATHS.FACILITY_PATH, allowAccessAdmin, facilitiesController.removeFacility);
 
   // UNITS (INSIDE FACILITY)
   router.get(PATHS.FACILITY_UNITS_PATH, allowAccessUser, facilitiesController.getUnits);
@@ -28,18 +26,25 @@ module.exports = router => {
   router.post(PATHS.LOGIN_PATH, usersController.login);
   router.get(PATHS.ACCOUNT_PATH, requireAuth, usersController.getAccount);
 
-  // ORGANIZATIONS
-  router.get(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.showOrganizations);
-  router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
-  router.delete(PATHS.ORGANIZATION_PATH, allowAccessAdmin, organizationsController.removeOrganization);
-
   // READINGS
   router.post(PATHS.REGISTER_READING_PATH, onlyDevice, readingsController.registerReading);
+
+  // --- ADMIN ---
 
   // USER
   router.get(PATHS.USERS_PATH, allowAccessAdmin, usersController.showUsers);
   router.post(PATHS.USERS_PATH, allowAccessAdmin, usersController.register);
   router.delete(PATHS.USER_PATH, allowAccessAdmin, usersController.removeUser);
+
+  // ORGANIZATIONS
+  router.get(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.showOrganizations);
+  router.post(PATHS.ORGANIZATIONS_PATH, allowAccessAdmin, organizationsController.createOrganization);
+  router.delete(PATHS.ORGANIZATION_PATH, allowAccessAdmin, organizationsController.removeOrganization);
+
+  // FACILITIES
+  router.get(PATHS.ADMIN_FACILITIES_PATH, allowAccessAdmin, facilitiesController.showFacilitiesAdmin);
+  router.post(PATHS.ADMIN_FACILITIES_PATH, allowAccessAdmin, facilitiesController.createFacility);
+  router.delete(PATHS.ADMIN_FACILITY_PATH, allowAccessAdmin, facilitiesController.removeFacility);
 
   return router;
 };
