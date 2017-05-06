@@ -39,3 +39,23 @@ export const ADMIN_NEW_USER_PATH = {
   name: 'Users',
 };
 
+export const ADMIN_FACILITIES_PATH = {
+  url: adminPath('facilities'),
+  name: 'Facilities',
+};
+
+export const ADMIN_NEW_FACILITY_PATH = {
+  url: adminPath('facilities/new'),
+  name: 'Facilities',
+};
+
+export const ADMIN_UNITS_PATH = {
+  url: adminPath('units'),
+  name: 'Units',
+};
+
+export const ADMIN_NEW_UNIT_PATH = {
+  url: adminPath('units/new'),
+  name: 'Units',
+};
+

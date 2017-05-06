@@ -11,6 +11,8 @@ import CreateOrganization from 'features/admin/organizations/containers/CreateOr
 import UsersList from 'features/admin/users/containers/UsersList';
 import CreateUser from 'features/admin/users/containers/CreateUser';
 
+import FacilitiesList from 'features/admin/facilities/containers/FacilitiesList';
+
 import Loading from 'features/layout/containers/Loading';
 
 import { Switch } from 'react-router-dom';
@@ -59,6 +61,12 @@ const createRoutes = (store) => {
           needAdmin
           component={CreateUser}
           path={PATHS.ADMIN_NEW_USER_PATH.url}
+        />
+        <FacilityRoute
+          exact
+          needAdmin
+          component={FacilitiesList}
+          path={PATHS.ADMIN_FACILITIES_PATH.url}
         />
       </Switch>
     </Loading>);
