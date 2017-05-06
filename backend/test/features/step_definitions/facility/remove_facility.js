@@ -33,7 +33,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   When(/^I remove the facility with ID (\d+)$/, (facilityId, done) => {
-    request.del(`${PATHS.FACILITIES_PATH}/${facilityId}`, null, token, (error, response, statusCode) => {
+    request.del(PATHS.ADMIN_FACILITY_PATH.replace(':facility', facilityId.toString()), null, token, (error, response, statusCode) => {
       should.not.exists(error);
       responseRemove = { response, statusCode };
       done();
