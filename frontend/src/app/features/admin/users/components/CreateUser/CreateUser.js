@@ -1,6 +1,5 @@
 /* eslint-disable react/require-default-props */
 import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
 import { Field } from 'redux-form';
 
 import Header from 'core/components/Header';
@@ -9,26 +8,9 @@ import Select from 'core/components/Select';
 import ActionButton from 'core/components/ActionButton';
 import FormTitle from 'core/components/FormTitle';
 import Switch from 'core/components/Switch';
-
-const FormLayout = styled.div`
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const FormContainer = styled.div`
-  padding: 2em;
-  width: 60em;
-  border-radius: 3px;
-  border: 1px solid #e5e7ea;
-`;
-
-const InlineInputs = styled.span`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
+import FormLayout from 'core/components/FormLayout';
+import FormContainer from 'core/components/FormContainer';
+import InlineInputs from 'core/components/InlineInputs';
 
 class CreateUser extends Component {
   componentWillMount() {
