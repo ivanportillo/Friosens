@@ -46,5 +46,8 @@ module.exports = router => {
   router.post(PATHS.ADMIN_FACILITIES_PATH, allowAccessAdmin, facilitiesController.createFacility);
   router.delete(PATHS.ADMIN_FACILITY_PATH, allowAccessAdmin, facilitiesController.removeFacility);
 
+  // UNITS
+  router.get(PATHS.ADMIN_UNITS_PATH, allowAccessAdmin, facilitiesController.showUnitsAdmin);
+
   return router;
 };
