@@ -33,7 +33,7 @@ defineSupportCode(({ Given, When, Then }) => {
     const payload = {
       name: table.hashes()[0].name,
       location: table.hashes()[0].location,
-      organizationId: int
+      organization_id: int
     };
     request.post(PATHS.ADMIN_FACILITIES_PATH, payload, token, (error, response, statusCode) => {
       should.not.exist(error);

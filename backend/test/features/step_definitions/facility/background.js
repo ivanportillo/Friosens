@@ -31,7 +31,7 @@ defineSupportCode(({ Given }) => {
   //REMOVE_FACILITY
   Given(/^the following facility:$/, (table, done) => {
     const facility = table.hashes()[0];
-    createFacility(facility, facility.organization_id, err => {
+    createFacility(facility, err => {
       should.not.exist(err);
       done();
     });
@@ -50,7 +50,7 @@ defineSupportCode(({ Given }) => {
   Given(/^the following facilities:$/, (table, done) => {
     const facilities = table.hashes();
     async.each(facilities, (facility, cb) => {
-      createFacility(facility, facility.organization_id, err => {
+      createFacility(facility, err => {
         should.not.exist(err);
         cb();
       });

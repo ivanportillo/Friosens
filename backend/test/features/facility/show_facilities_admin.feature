@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Show facilities admin
   As administrator
   I want to be able to show the facilities of the system
