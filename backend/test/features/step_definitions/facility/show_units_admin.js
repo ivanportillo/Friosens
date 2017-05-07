@@ -43,9 +43,9 @@ defineSupportCode(({ Given, When, Then }) => {
     done();
   });
 
-  Then(/^each unit should have name, location, refrigerant and token$/, done => {
+  Then(/^each unit should have name, location, refrigerant, token and facility$/, done => {
     async.each(showResponse.response.data, (unit, next) => {
-      should(unit).have.keys('name', 'location', 'refrigerant', 'token');
+      should(unit).have.keys('name', 'location', 'refrigerant', 'token', 'facility');
       next();
     }, done);
   });
