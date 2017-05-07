@@ -104,7 +104,7 @@ export const removeUnit = unitId =>
 
 export const createUnit =
   (name, location, refrigerant, mark, unitModel, serialNumber, facilityId) =>
-  axios.post(apiPaths.ADMIN_FACILITIES_PATH, {
+  axios.post(apiPaths.ADMIN_UNITS_PATH, {
     name,
     location,
     refrigerant,
