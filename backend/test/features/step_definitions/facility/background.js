@@ -40,7 +40,7 @@ defineSupportCode(({ Given }) => {
 
   Given(/^the following unit:$/, (table, done) => {
     const unit = table.hashes()[0];
-    createUnit(unit.facility_id, unit, err => {
+    createUnit(unit, err => {
       should.not.exist(err);
       done();
     });
@@ -61,7 +61,7 @@ defineSupportCode(({ Given }) => {
   Given(/^the following units:$/, (table, done) => {
     const units = table.hashes();
     async.each(units, (unit, cb) => {
-      createUnit(unit.facility_id, unit, err => {
+      createUnit(unit, err => {
         should.not.exist(err);
         cb();
       });

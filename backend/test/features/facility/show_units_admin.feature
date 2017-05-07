@@ -1,4 +1,4 @@
-@sprint1 @working
+@sprint1
 Feature: Show units admin
   As administrator
   I want to be able to show the units of the system

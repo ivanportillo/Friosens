@@ -46,12 +46,13 @@ module.exports = {
       name: req.body.name,
       location: req.body.location,
       refrigerant: req.body.refrigerant,
-      mark: req.body.mark
+      mark: req.body.mark,
+      facility_id: req.body.facility_id
     };
-    createUnit(req.params.id, unit, responseBuilder.createResponse(req, res));
+    createUnit(unit, responseBuilder.createResponse(req, res));
   },
   removeUnit: (req, res) => {
-    removeUnit(req.params.id, req.params.unit, responseBuilder.createResponse(req, res));
+    removeUnit(req.params.unit, responseBuilder.createResponse(req, res));
   },
   showAlarms: (req, res) => {
     showHistoricalAlarms(req.params.unit, req.query.limit, responseBuilder.createResponse(req, res));

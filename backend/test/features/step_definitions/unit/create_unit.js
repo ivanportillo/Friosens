@@ -32,7 +32,8 @@ defineSupportCode(({ Given, When, Then }) => {
 
   When(/^I create to facility ID (\d+) the following unit:$/, (facilityId, table, done) => {
     const unit = table.hashes()[0];
-    request.post(PATHS.FACILITY_UNITS_PATH.replace(':id', facilityId.toString()), unit, token, (error, response, statusCode) => {
+    unit.facility_id = facilityId;
+    request.post(PATHS.ADMIN_UNITS_PATH, unit, token, (error, response, statusCode) => {
       should.not.exist(error);
       createResponse = { response, statusCode };
       done();

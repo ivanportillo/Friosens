@@ -11,8 +11,8 @@ module.exports = (unitRepository, unitServices) => {
     else cb();
   };
 
-  const _createUnit = (unit, facilityId, cb) => {
-    unitRepository.create(unit, facilityId, cb);
+  const _createUnit = (unit, cb) => {
+    unitRepository.create(unit, unit.facility_id, cb);
   };
 
   const _generateToken = (unit, cb) => {
@@ -26,9 +26,9 @@ module.exports = (unitRepository, unitServices) => {
     });
   };
 
-  return (facilityId, unit, callback) => waterfall([
+  return (unit, callback) => waterfall([
     next => _validate(unit, next),
-    next => _createUnit(unit, facilityId, next),
+    next => _createUnit(unit, next),
     (unit, next) => _generateToken(unit, next),
   ], callback);
 };

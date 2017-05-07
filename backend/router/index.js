@@ -18,8 +18,6 @@ module.exports = router => {
 
   // UNITS (INSIDE FACILITY)
   router.get(PATHS.FACILITY_UNITS_PATH, allowAccessUser, facilitiesController.getUnits);
-  router.post(PATHS.FACILITY_UNITS_PATH, allowAccessAdmin, facilitiesController.createUnit);
-  router.delete(PATHS.FACILITY_UNIT_PATH, allowAccessAdmin, facilitiesController.removeUnit);
   router.get(PATHS.UNIT_ALARMS_PATH, allowAccessUser, facilitiesController.showAlarms);
 
   // AUTH
@@ -48,6 +46,8 @@ module.exports = router => {
 
   // UNITS
   router.get(PATHS.ADMIN_UNITS_PATH, allowAccessAdmin, facilitiesController.showUnitsAdmin);
+  router.post(PATHS.ADMIN_UNITS_PATH, allowAccessAdmin, facilitiesController.createUnit);
+  router.delete(PATHS.ADMIN_UNIT_PATH, allowAccessAdmin, facilitiesController.removeUnit);
 
   return router;
 };

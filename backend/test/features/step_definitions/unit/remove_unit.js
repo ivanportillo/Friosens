@@ -33,7 +33,7 @@ defineSupportCode(({ Given, When, Then }) => {
   });
 
   When(/^I remove the unit with ID (\d+) of facility ID (\d+)$/, (unitId, facilityId, done) => {
-    const path = PATHS.FACILITY_UNIT_PATH.replace(":id", facilityId.toString()).replace(":unit", unitId.toString());
+    const path = PATHS.ADMIN_UNIT_PATH.replace(":unit", unitId.toString());
     request.del(path, null, token, (error, response, statusCode) => {
       should.not.exist(error);
       removeResponse = { response, statusCode };
