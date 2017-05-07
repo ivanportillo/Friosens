@@ -83,9 +83,10 @@ export const removeFacility = facilityId =>
     headers: { Authorization: getToken() },
   });
 
-export const createFacility = (name, location, organization_id) => axios.post(apiPaths.ADMIN_FACILITIES_PATH, {
-  name, location, organization_id,
-}, {
-  baseURL: API_BASE,
-  headers: { Authorization: getToken() },
-});
+export const createFacility = (name, location, organizationId) =>
+  axios.post(apiPaths.ADMIN_FACILITIES_PATH, {
+    name, location, organization_id: organizationId,
+  }, {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });
