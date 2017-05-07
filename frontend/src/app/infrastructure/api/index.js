@@ -90,3 +90,29 @@ export const createFacility = (name, location, organizationId) =>
     baseURL: API_BASE,
     headers: { Authorization: getToken() },
   });
+
+export const fetchAdminUnits = () => axios.get(apiPaths.ADMIN_UNITS_PATH, {
+  baseURL: API_BASE,
+  headers: { Authorization: getToken() },
+});
+
+export const removeUnit = unitId =>
+  axios.delete(apiPaths.ADMIN_UNIT_PATH.replace(':unit', unitId), {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });
+
+export const createUnit =
+  (name, location, refrigerant, mark, unitModel, serialNumber, facilityId) =>
+  axios.post(apiPaths.ADMIN_FACILITIES_PATH, {
+    name,
+    location,
+    refrigerant,
+    mark,
+    unit_model: unitModel,
+    serial_number: serialNumber,
+    facility_id: facilityId,
+  }, {
+    baseURL: API_BASE,
+    headers: { Authorization: getToken() },
+  });
