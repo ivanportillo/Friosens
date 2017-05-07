@@ -37,3 +37,7 @@ exports.ORGANIZATION_PATH = adminPrefix('/organizations/:organization');
 exports.ADMIN_FACILITIES_PATH = adminPrefix('/facilities');
 exports.ADMIN_FACILITY_PATH = adminPrefix('/facilities/:facility');
 
+// UNITS
+exports.ADMIN_UNITS_PATH = adminPrefix('/units');
+exports.ADMIN_UNIT_PATH = adminPrefix('/units/:unit');
+
