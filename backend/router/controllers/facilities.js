@@ -46,6 +46,8 @@ module.exports = {
       name: req.body.name,
       location: req.body.location,
       refrigerant: req.body.refrigerant,
+      unit_model: req.body.unit_model,
+      serial_number: req.body.serial_number,
       mark: req.body.mark,
       facility_id: req.body.facility_id
     };
