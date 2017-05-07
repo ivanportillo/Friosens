@@ -41,7 +41,12 @@ export function* removeFacilityProcess(action) {
 export function* createFacilityProcess(action) {
   try {
     const { data } =
-      yield call(api.createFacility, action.name, action.location, action.organization_id);
+      yield call(
+        api.createFacility,
+        action.facility.name,
+        action.facility.location,
+        action.facility.organization_id,
+      );
     if (data.data) {
       yield put(push(PATHS.ADMIN_FACILITIES_PATH.url));
     }
