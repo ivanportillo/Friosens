@@ -5,6 +5,11 @@ module.exports = UnitEntity => {
     unit.facility_id = facilityId;
     UnitEntity.create(unit, cb);
   };
+
+  const getAll = (cb) => {
+    const query = {};
+    UnitEntity.find(query, cb);
+  };
   
   const findOneById = (unitId, cb) => {
     const query = { id: unitId };
@@ -33,6 +38,7 @@ module.exports = UnitEntity => {
 
   return {
     create,
+    getAll,
     findByFacilityId,
     findByFacilityAndUnitId,
     remove,
