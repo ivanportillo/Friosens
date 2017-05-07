@@ -20,9 +20,10 @@ module.exports = {
   createFacility: (req, res) => {
     const facility = {
       name: req.body.name,
-      location: req.body.location
+      location: req.body.location,
+      organization_id: req.body.organization_id
     };
-    createFacility(facility, req.body.organizationId, responseBuilder.createResponse(req, res));
+    createFacility(facility, responseBuilder.createResponse(req, res));
   },
   removeFacility: (req, res) => {
     removeFacility(req.params.facility, responseBuilder.createResponse(req, res));
