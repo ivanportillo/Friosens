@@ -20,7 +20,7 @@ Feature: Show units admin
       |  3 | unit3 | LOCATION | R410A       | MARK |          20 |
     When [show_units_admin] I get units
     Then [show_units_admin] I should receive 3 units and 200 as status code
-    And each unit should have name, location, refrigerant and token
+    And each unit should have name, location, refrigerant, token and facility
 
   Scenario: Show units of a empty facility
     When [show_units_admin] I get units
