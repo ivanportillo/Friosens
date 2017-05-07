@@ -12,6 +12,7 @@ import UsersList from 'features/admin/users/containers/UsersList';
 import CreateUser from 'features/admin/users/containers/CreateUser';
 
 import FacilitiesList from 'features/admin/facilities/containers/FacilitiesList';
+import CreateFacility from 'features/admin/facilities/containers/CreateFacility';
 
 import Loading from 'features/layout/containers/Loading';
 
@@ -67,6 +68,12 @@ const createRoutes = (store) => {
           needAdmin
           component={FacilitiesList}
           path={PATHS.ADMIN_FACILITIES_PATH.url}
+        />
+        <FacilityRoute
+          exact
+          needAdmin
+          component={CreateFacility}
+          path={PATHS.ADMIN_NEW_FACILITY_PATH.url}
         />
       </Switch>
     </Loading>);
