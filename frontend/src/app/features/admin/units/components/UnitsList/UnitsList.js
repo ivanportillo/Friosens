@@ -12,7 +12,9 @@ import DeleteButton from 'core/components/DeleteButton';
 import TopControls from 'core/components/TopControls';
 
 import { Table, TableHead, TableCell, TableRow } from 'react-toolbox/lib/table';
+import Dialog from 'react-toolbox/lib/dialog';
 import FontIcon from 'react-toolbox/lib/font_icon';
+import Button from 'react-toolbox/lib/button';
 
 
 const Icon = styled(FontIcon)`
@@ -21,10 +23,20 @@ const Icon = styled(FontIcon)`
   }
 `;
 
+const DialogContainer = styled.div`
+  width: 100%;
+  padding: 1em;
+  word-wrap: break-word;
+`;
+
+
 class UnitsList extends Component {
   static propTypes = {
+    closeTokenDialog: PropTypes.func.isRequired,
     fetchUnits: PropTypes.func.isRequired,
     isLoadingUnits: PropTypes.bool.isRequired,
+    isOpenDialog: PropTypes.bool.isRequired,
+    openTokenDialog: PropTypes.func.isRequired,
     removeUnit: PropTypes.func.isRequired,
     units: PropTypes.array.isRequired,
   };
@@ -32,7 +44,10 @@ class UnitsList extends Component {
     this.props.fetchUnits();
   }
 
-  renderUnits = (units, removeUnit) => {
+  renderUnits = (units, removeUnit, isOpenDialog, openDialog, closeDialog) => {
+    const actions = [
+      { label: 'OK', onClick: closeDialog },
+    ];
     if (units.length) {
       const unitsToRender = units.map(unit =>
         <TableRow key={unit.id}>
@@ -55,7 +70,16 @@ class UnitsList extends Component {
             {unit.serial_number}
           </TableCell>
           <TableCell>
-            Ver token
+            <Button onClick={openDialog}>Ver token</Button>
+            <Dialog
+              actions={actions}
+              active={isOpenDialog}
+              onEscKeyDown={closeDialog}
+              onOverlayClick={closeDialog}
+              title="Token de la unidad"
+            >
+              <DialogContainer>{unit.token}</DialogContainer>
+            </Dialog>
           </TableCell>
           <TableCell>
             <Link to={PATHS.ADMIN_FACILITIES_PATH.url}>{unit.facility.name}</Link>
@@ -82,7 +106,14 @@ class UnitsList extends Component {
     return (<EmptyLabel>No existe ninguna unidad</EmptyLabel>);
   };
   render() {
-    const { units, isLoadingUnits, removeUnit } = this.props;
+    const {
+      units,
+      isLoadingUnits,
+      removeUnit,
+      closeTokenDialog,
+      isOpenDialog,
+      openTokenDialog,
+    } = this.props;
     return (
       <div>
         <TopControls>
@@ -90,7 +121,7 @@ class UnitsList extends Component {
           <Link to={PATHS.ADMIN_NEW_UNIT_PATH.url}><ActionButton label="Nueva unidad" /></Link>
         </TopControls>
         {!isLoadingUnits
-          ? this.renderUnits(units, removeUnit)
+          ? this.renderUnits(units, removeUnit, isOpenDialog, openTokenDialog, closeTokenDialog)
           : <Loader />}
       </div>
     );
