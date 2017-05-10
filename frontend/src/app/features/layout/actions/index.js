@@ -11,3 +11,15 @@ export function hideDrawer() {
     type: constants.HIDE_DRAWER,
   };
 }
+
+export function openTokenDialog() {
+  return {
+    type: constants.OPEN_TOKEN_DIALOG,
+  };
+}
+
+export function closeTokenDialog() {
+  return {
+    type: constants.CLOSE_TOKEN_DIALOG,
+  };
+}
