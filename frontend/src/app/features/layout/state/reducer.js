@@ -12,8 +12,20 @@ function drawer(state = false, action) {
   }
 }
 
+function tokenDialog(state = false, action) {
+  switch (action.type) {
+    case constants.OPEN_TOKEN_DIALOG:
+      return true;
+    case constants.CLOSE_TOKEN_DIALOG:
+      return false;
+    default:
+      return state;
+  }
+}
+
 const uiReducer = combineReducers({
   drawer,
+  tokenDialog,
 });
 
 export default uiReducer;
